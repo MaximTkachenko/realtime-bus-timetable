@@ -14,3 +14,8 @@ Tasks:
 - post translation on habr
 - prepare talk for STVG developer group
 - mybe port to personla blog
+
+ToDo:
+- basic logic
+- persistence
+- clustering
