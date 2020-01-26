@@ -7,12 +7,15 @@ namespace BusTimetable.Grains
 {
     public class BusStopGrain : Grain, IBusStop
     {
+        //should contain timetable
+        //updates bus arrival according to messages from bus grain
+
         public Task UpdateBusArrival(string busId, int minutesBeforeArrival)
         {
             throw new NotImplementedException();
         }
 
-        public Task<string[]> GetTimeTableAsync()
+        public Task<string[]> GetTimeTable()
         {
             throw new NotImplementedException();
         }
