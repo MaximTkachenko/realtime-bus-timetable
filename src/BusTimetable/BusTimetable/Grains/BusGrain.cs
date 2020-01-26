@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
+using Orleans;
 
 namespace BusTimetable.Grains
 {
-    public class BusGrain : IBus
+    public class BusGrain : Grain, IBus
     {
+        public Task UpdateLocation(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
