@@ -10,12 +10,12 @@ Useful links:
 - https://dotnet.github.io/orleans/Documentation/index.html
 
 Tasks:
-- prepare article for medium
-- post translation on habr
+- prepare article for blog
 - prepare talk for STVG developer group
-- mybe port to personla blog
 
 ToDo:
+- need route generator (100 routes)
 - basic logic
 - persistence
 - clustering
+- dockerize, put into AKS
