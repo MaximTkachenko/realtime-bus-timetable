@@ -2,16 +2,16 @@
 Real time bus timetable
 
 Stack:
-- [svg.js](https://svgjs.com)
-- [orleans](https://dotnet.github.io/orleans/)
+- frontend: typescript, react, [svg.js](https://svgjs.com)
+- backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
 
 Useful links:
 - https://svgjs.com/docs/2.7/
 - https://dotnet.github.io/orleans/Documentation/index.html
 
 Tasks:
-- prepare article for blog
-- prepare talk for STVG developer group
+- article for blog
+- talk for STVG developer group
 
 ToDo:
 - need route generator (100 routes)
