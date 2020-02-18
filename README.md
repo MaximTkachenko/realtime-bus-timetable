@@ -4,6 +4,7 @@ Real time bus timetable
 Stack:
 - frontend: typescript, react, [svg.js](https://svgjs.com)
 - backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
+- signalr, azure signalr for AKS hosting
 
 Useful links:
 - https://svgjs.com/docs/2.7/
@@ -34,6 +35,4 @@ rect.animate(1000, '-', 0).move(300, 100);
 rect.animate(1000, '-', 0).move(100, 100);
 let i = 0;
 setInterval(function() { if(i > 50) return;console.log(rect.node.cx.baseVal.value); i++;}, 100);
-
-
 ```
