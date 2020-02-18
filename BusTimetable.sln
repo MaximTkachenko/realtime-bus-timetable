@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{B9DA73E9-3B1F-4537-990A-948D25D2E1AA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6309F1E-9976-4747-80A0-CBC64845AB78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{6AB30DC7-B69F-4FBC-98C2-0DE5A4135655}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1AFA2D6D-2036-4DC0-B79D-95BCF66F6F77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusTimetable", "src\BusTimetable\BusTimetable.csproj", "{8875D659-3A23-4F82-B235-1C5B3F19854B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTimetable.RouteGenerator", "tools\BusTimetable.RouteGenerator\BusTimetable.RouteGenerator.csproj", "{AB58CDBD-E507-4552-B2D3-819D4230BE5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTimetable.Tests", "tests\BusTimetable.Tests\BusTimetable.Tests.csproj", "{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8875D659-3A23-4F82-B235-1C5B3F19854B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8875D659-3A23-4F82-B235-1C5B3F19854B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8875D659-3A23-4F82-B235-1C5B3F19854B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8875D659-3A23-4F82-B235-1C5B3F19854B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB58CDBD-E507-4552-B2D3-819D4230BE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB58CDBD-E507-4552-B2D3-819D4230BE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB58CDBD-E507-4552-B2D3-819D4230BE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB58CDBD-E507-4552-B2D3-819D4230BE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8875D659-3A23-4F82-B235-1C5B3F19854B} = {C6309F1E-9976-4747-80A0-CBC64845AB78}
+		{AB58CDBD-E507-4552-B2D3-819D4230BE5B} = {6AB30DC7-B69F-4FBC-98C2-0DE5A4135655}
+		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8} = {1AFA2D6D-2036-4DC0-B79D-95BCF66F6F77}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF7180DE-3381-42E9-B410-E3D0CF8CFC5B}
+	EndGlobalSection
+EndGlobal
