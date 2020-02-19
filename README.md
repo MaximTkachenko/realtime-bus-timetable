@@ -39,7 +39,7 @@ ToDo:
 	]
 }
 ```
-https://jsfiddle.net/tj36bgzd/1/
+https://jsfiddle.net/gfwtea8b/
 
 ```html
 <div id="drawing"></div>
