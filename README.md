@@ -22,6 +22,24 @@ ToDo:
 - clustering
 - dockerize, put into AKS
 
+```json
+{
+	routes: [
+		{ 
+			"path": [
+				{ "x": 0, "y": 0, "isBusStop": true, "name": "", "predictedTravelTime": 5 },
+				{ "x": 0, "y": 0, "isBusStop": false }
+			],
+			"name": "",
+			"color": "",			
+		}
+	],
+	busStops: [
+		{ "x": 0, "y": 0, "name": "" }
+	]
+}
+```
+
 ```html
 <div id="drawing"></div>
 ```
