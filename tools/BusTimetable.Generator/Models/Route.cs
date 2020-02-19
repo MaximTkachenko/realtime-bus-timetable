@@ -4,6 +4,7 @@
     {
         public string Id { get; set; }
         public string Color { get; set; }
+        public Point[] Path { get; set; }
 
         public class Point
         {
