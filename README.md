@@ -9,6 +9,7 @@ Stack:
 Useful links:
 - https://svgjs.com/docs/2.7/
 - https://dotnet.github.io/orleans/Documentation/index.html
+- https://dev.to/dirk94/how-i-structure-my-express-typescript-react-applications-g3e
 
 Tasks:
 - article for blog
