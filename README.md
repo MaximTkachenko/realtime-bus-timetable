@@ -39,6 +39,7 @@ ToDo:
 	]
 }
 ```
+https://jsfiddle.net/tj36bgzd/1/
 
 ```html
 <div id="drawing"></div>
@@ -48,10 +49,14 @@ ToDo:
 var draw = SVG('drawing')
 
 // draw pink square
-const rect = draw.circle(20).move(10, 10).fill('#f06');
-rect.animate(1000, '-', 0).move(100, 100);
-rect.animate(1000, '-', 0).move(300, 100);
-rect.animate(1000, '-', 0).move(100, 100);
+var draw = SVG().addTo('#drawing').size('900px', '900px');
+// draw pink square
+const rect = draw.circle(20).x(10).y(10).fill('#f06');
+const animateConfig = { ease: '<>', duration: 1000, delay: 0 };
+rect.animate(animateConfig).move(200, 200);
+rect.animate(animateConfig).move(200, 400);
+rect.animate(animateConfig).move(600, 400);
+rect.animate(animateConfig).move(10, 10);
 let i = 0;
 setInterval(function() { if(i > 50) return;console.log(rect.node.cx.baseVal.value); i++;}, 100);
 ```
