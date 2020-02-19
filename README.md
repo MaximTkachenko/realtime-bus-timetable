@@ -24,7 +24,7 @@ ToDo:
 
 ```json
 {
-	routes: [
+	"routes": [
 		{ 
 			"path": [
 				{ "x": 0, "y": 0, "isBusStop": true, "name": "", "predictedTravelTime": 5 },
@@ -34,7 +34,7 @@ ToDo:
 			"color": "",			
 		}
 	],
-	busStops: [
+	"busStops": [
 		{ "x": 0, "y": 0, "name": "" }
 	]
 }
