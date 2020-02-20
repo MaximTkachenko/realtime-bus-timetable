@@ -8,6 +8,8 @@ namespace BusTimetable
 {
     public class Startup
     {
+        private readonly string LocalhostClient = "LocalhostClient";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -18,6 +20,14 @@ namespace BusTimetable
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(LocalhostClient, builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000");
+                    });
+            });
+
             services.AddControllers();
         }
 
@@ -29,6 +39,8 @@ namespace BusTimetable
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(LocalhostClient);
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -37,7 +49,7 @@ namespace BusTimetable
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"); ;
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
