@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Models;
 
 namespace BusTimetable.Controllers
 {
@@ -7,6 +12,13 @@ namespace BusTimetable.Controllers
     public class TimetableController : ControllerBase
     {
         private readonly ILogger<TimetableController> _logger;
+        private static readonly Root Metadata;
+
+        static TimetableController()
+        {
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "metadata.json");
+            Metadata = JsonSerializer.Deserialize<Root>(System.IO.File.ReadAllText(path));
+        }
 
         public TimetableController(ILogger<TimetableController> logger)
         {
@@ -14,10 +26,9 @@ namespace BusTimetable.Controllers
         }
 
         [HttpGet("metadata")]
-        public IActionResult Metadata()
+        public IActionResult GetMetadata()
         {
-            //todo return bus stops and routes
-            return Ok();
+            return Ok(Metadata);
         }
 
         [HttpPost("location")]

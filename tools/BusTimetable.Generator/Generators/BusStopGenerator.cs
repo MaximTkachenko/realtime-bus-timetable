@@ -1,5 +1,5 @@
 ﻿using System;
-using BusTimetable.Generator.Models;
+using Models;
 
 namespace BusTimetable.Generator.Generators
 {
@@ -15,24 +15,14 @@ namespace BusTimetable.Generator.Generators
             {
                 stops[i] = new BusStop
                 {
-                    Id = GetId(),
-                    Color = GetColor(),
+                    Id = IdGenerator.GetId(i),
+                    Color = ColorHexGenerator.GetColor(),
                     X = xRandom.Next(0, width),
                     Y = yRandom.Next(0, height)
                 };
             }
 
             return stops;
-        }
-
-        private static string GetColor()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static string GetId()
-        {
-            throw new NotImplementedException();
         }
     }
 }

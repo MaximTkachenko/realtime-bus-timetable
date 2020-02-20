@@ -1,10 +1,13 @@
 ﻿using System;
-using BusTimetable.Generator.Models;
+using System.Collections.Generic;
+using Models;
 
 namespace BusTimetable.Generator.Generators
 {
     static class RouteGenerator
     {
+        private static readonly Random Rnd = new Random(Guid.NewGuid().GetHashCode());
+
         public static Route[] Generate(BusStop[] busStops, int width, int height, int routesNumber)
         {
             var routes = new Route[routesNumber];
@@ -12,28 +15,33 @@ namespace BusTimetable.Generator.Generators
             {
                 routes[i] = new Route
                 {
-                    Id = GetId(),
-                    Color = GetColor(),
-                    Path = GetPath()
+                    Id = IdGenerator.GetId(i),
+                    Color = ColorHexGenerator.GetColor(),
+                    Path = GetPath(busStops, width, height)
                 };
             }
 
             return routes;
         }
 
-        private static string GetColor()
+        private static Route.Point[] GetPath(BusStop[] busStops, int width, int height)
         {
-            throw new NotImplementedException();
-        }
-
-        private static string GetId()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static Route.Point[] GetPath()
-        {
-            throw new NotImplementedException();
+            var list = new List<BusStop>(busStops);
+            int numberOfStops = busStops.Length / 2 + (int)(busStops.Length * 0.4 / 2);
+            var route = new Route.Point[numberOfStops];
+            for (int i = 0; i < numberOfStops; i++)
+            {
+                var stop = list[Rnd.Next(0, list.Count)];
+                list.Remove(stop);
+                route[i] = new Route.Point
+                {
+                    BusStopId = stop.Id,
+                    X = stop.X,
+                    Y = stop.Y
+                };
+            }
+            
+            return route;
         }
     }
 }
