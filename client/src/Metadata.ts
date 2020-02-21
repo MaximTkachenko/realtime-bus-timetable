@@ -1,10 +1,14 @@
-export class Root {
+export class Root {    
+    width: number;
+    height: number;
     routes: Route[];
     busStops: BusStop[];
     
     constructor() {
         this.routes = [];
         this.busStops = [];
+        this.width = 0;
+        this.height = 0;
     }
 }
 
@@ -27,8 +31,8 @@ export class Point{
     isBusStop: boolean;
     
     constructor() {
-        this.x = -1;
-        this.y = -1;
+        this.x = 0;
+        this.y = 0;
         this.busStopId = '';
         this.isBusStop = false;
     }
@@ -43,7 +47,7 @@ export class BusStop {
     constructor() {
         this.id = '';
         this.color = '';
-        this.x = -1;
-        this.y = -1;
+        this.x = 0;
+        this.y = 0;
     }
 }
