@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import WelcomeScreen from './WelcomeScreen';
 import RoutesScreen from './RoutesScreen';
+import { Root } from './Metadata';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 type AppProps = {  };
-type AppState = { connected: boolean, server: string, error: boolean, metadata: any };
+type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null };
 
 class App extends Component<AppProps, AppState> {
   constructor(props: AppProps){
@@ -19,11 +21,11 @@ class App extends Component<AppProps, AppState> {
     .then(response => response.json())
     .then(response =>
       this.setState({ 
-      connected: true,
-      server: this.state.server,
-      error: false,
-      metadata: response
-    }))
+        connected: true,
+        server: this.state.server,
+        error: false,
+        metadata: response
+      }))
     .catch(error => this.setState({ 
       connected: false,
       server: this.state.server,
@@ -44,12 +46,15 @@ class App extends Component<AppProps, AppState> {
       screen = 
       <div className="App">
         <header className="App-header">
-        <WelcomeScreen onClick={this.handleClick} onChange={this.updateHost} />
+        <div>
+            <TextField id="host" label="Host" onChange={this.updateHost} />
+            <Button variant="contained" color="primary" onClick={this.handleClick}>go</Button>
+        </div>
         </header>
       </div>;
     }
     else{
-      screen = <RoutesScreen/>;
+      screen = <RoutesScreen metadata={this.state.metadata} />;
     }
 
     return screen;
