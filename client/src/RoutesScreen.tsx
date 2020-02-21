@@ -5,12 +5,14 @@ type RoutesScreenProps = { metadata: Root | null };
 type RoutesScreenState = { };
 
 class RoutesScreen extends Component<RoutesScreenProps, RoutesScreenState> {
-    render () {  
-        console.log(this.props.metadata);      
+    componentDidMount() {
+        let ev = new CustomEvent('routesReady', {'detail': this.props.metadata});
+        document.dispatchEvent(ev);
+    }
+
+    render () {    
         return ( 
-            <div>
-                <div>success</div>
-            </div>            
+            <div id="routes"></div>            
         );
     };
 }
