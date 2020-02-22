@@ -1,8 +1,13 @@
 import * as SVG from "@svgdotjs/svg.js";
 import {Root} from './Metadata';
 
-export default class RouesRendere{
+export default class RoutesRendere{
     init(){
+        const busStopRadius: number = 40;
+        const busStopOffset: number = busStopRadius / 2;
+        const busRadius: number = 20;
+        const busOffset: number = busRadius / 2;
+        
         document.addEventListener("routesReady", (e: any) => {
             let data: Root = e.detail.metadata;
             let server: string = e.detail.server;
@@ -23,38 +28,43 @@ export default class RouesRendere{
                 }
                 draw.polyline(arr)
                     .fill('none')
-                    .stroke({ color: route.color, width: 1, linecap: 'round', linejoin: 'round' })
-            }
-
-            
+                    .stroke({ color: route.color, width: 2, linecap: 'round', linejoin: 'round' })
+            }            
             
             for(let i = 0; i < data.busStops.length; i++) {
                 const stop = data.busStops[i];
-                const stopCircle = draw.circle(20).x(stop.x - 10).y(stop.y - 10).fill(stop.color);
+                draw.circle(busStopRadius).x(stop.x - busStopOffset).y(stop.y - busStopOffset)
+                    .stroke({ color: 'black'}).fill(stop.color)
+                    .add(draw.element('title').words(stop.id))
+                    .attr('id', stop.id)
+                    .click((e: any) => {
+                        let busStopSelected = new CustomEvent('busStopSelected', {'detail': e.target.id});
+                        document.dispatchEvent(busStopSelected);
+                    });
             }
             
             const buses: SVG.Circle[] = [];
-            const animateConfig = { ease: '<>', duration: 4000, delay: 0 };
+            const animateConfig = { ease: '--', duration: 6000, delay: 0 };
             for(let i = 0; i < data.routes.length; i++) {
                 const route = data.routes[i];
 
-                const rect = draw.circle(40).x(route.path[0].x - 20).y(route.path[0].y - 20).fill(data.routes[i].color).attr('id', route.id);
-                buses.push(rect);
+                const routeCircle = draw.circle(busRadius).x(route.path[0].x - busOffset).y(route.path[0].y - busOffset)
+                    .fill(data.routes[i].color).stroke({ color: 'black'}).attr('id', route.id);
+                buses.push(routeCircle);
 
-                for(let j = 1; j < route.path.length; j++){
-                    rect.animate(animateConfig).move(route.path[j].x - 20, route.path[j].y - 20);
+                for(let j = 1; j < route.path.length; j++) {
+                    routeCircle.animate(animateConfig).move(route.path[j].x - busOffset, route.path[j].y - busOffset);
                 }
            }
 
-           setInterval(async () => { 
-
+           setInterval(async () => {
                 const promises: Promise<Response>[] = [];
                 for(let i = 0; i < buses.length; i++) {
-                    const promise = fetch(server + '/' + buses[i].attr('id') + '/location/', {
+                    const promise = fetch(server + '/' + buses[i].attr('id') + '/location', {
                         method: 'POST',
                         headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({x: buses[i].node.cx.baseVal.value, y: buses[i].node.cy.baseVal.value})
                     });
@@ -64,7 +74,6 @@ export default class RouesRendere{
                 
                 await Promise.all(promises);
             }, 200);
-
         });
     }
 }

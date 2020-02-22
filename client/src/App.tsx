@@ -4,6 +4,7 @@ import RoutesScreen from './RoutesScreen';
 import { Root } from './Metadata';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Timetable from './Timetable';
 
 type AppProps = {  };
 type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null };
@@ -54,7 +55,11 @@ class App extends Component<AppProps, AppState> {
       </div>;
     }
     else{
-      screen = <RoutesScreen metadata={this.state.metadata} server={this.state.server} />;
+      screen = (
+        <div>
+          <RoutesScreen metadata={this.state.metadata} server={this.state.server} />;
+          <Timetable/>
+        </div>);
     }
 
     return screen;
