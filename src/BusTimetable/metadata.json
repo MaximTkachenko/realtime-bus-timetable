@@ -41,8 +41,8 @@
     {
       "id": "ball-cost-6",
       "color": "#213882",
-      "x": 750,
-      "y": 750
+      "x": 780,
+      "y": 700
     },
     {
       "id": "people-down-7",
@@ -77,8 +77,8 @@
     {
       "id": "problem-bite-12",
       "color": "#71B3DF",
-      "x": 160,
-      "y": 720
+      "x": 180,
+      "y": 690
     },
     {
       "id": "heart-true-13",
@@ -90,7 +90,7 @@
       "id": "cost-watch-14",
       "color": "#710C98",
       "x": 500,
-      "y": 720
+      "y": 690
     },
     {
       "id": "bottle-cross-15",
@@ -119,44 +119,44 @@
         },
         {
           "busStopId": "street-century-1",
-          "duration": 3000,
+          "duration": 6000,
           "x": 250,
           "y": 100,
           "isBusStop": true
         },
         {
           "busStopId": "lend-sheet-2",
-          "duration": 3000,
+          "duration": 6000,
           "x": 200,
           "y": 200,
           "isBusStop": true
         },
         {
           "busStopId": "bank-most-3",
-          "duration": 3000,
+          "duration": 6000,
           "x": 400,
           "y": 400,
           "isBusStop": true
         },
         {
           "busStopId": "lip-hope-4",
-          "duration": 3000,
+          "duration": 6000,
           "x": 600,
           "y": 500,
           "isBusStop": true
         },
         {
           "busStopId": "cup-people-5",
-          "duration": 3000,
+          "duration": 6000,
           "x": 560,
           "y": 600,
           "isBusStop": true
         },
         {
           "busStopId": "ball-cost-6",
-          "duration": 3000,
-          "x": 750,
-          "y": 750,
+          "duration": 6000,
+          "x": 780,
+          "y": 700,
           "isBusStop": true
         }
       ]
@@ -181,28 +181,28 @@
         },
         {
           "busStopId": "bank-most-3",
-          "duration": 3000,
+          "duration": 6000,
           "x": 400,
           "y": 400,
           "isBusStop": true
         },
         {
           "busStopId": "stay-east-9",
-          "duration": 3000,
+          "duration": 6000,
           "x": 550,
           "y": 200,
           "isBusStop": true
         },
         {
           "busStopId": "lip-hope-4",
-          "duration": 3000,
+          "duration": 6000,
           "x": 600,
           "y": 500,
           "isBusStop": true
         },
         {
           "busStopId": "come-prince-10",
-          "duration": 3000,
+          "duration": 6000,
           "x": 750,
           "y": 380,
           "isBusStop": true
@@ -222,42 +222,42 @@
         },
         {
           "busStopId": "problem-bite-12",
-          "duration": 3000,
-          "x": 160,
-          "y": 720,
+          "duration": 6000,
+          "x": 180,
+          "y": 690,
           "isBusStop": true
         },
         {
           "busStopId": "heart-true-13",
-          "duration": 3000,
+          "duration": 6000,
           "x": 200,
           "y": 500,
           "isBusStop": true
         },
         {
           "busStopId": "cost-watch-14",
-          "duration": 3000,
+          "duration": 6000,
           "x": 500,
-          "y": 720,
+          "y": 690,
           "isBusStop": true
         },
         {
           "busStopId": "bank-most-3",
-          "duration": 3000,
+          "duration": 6000,
           "x": 400,
           "y": 400,
           "isBusStop": true
         },
         {
           "busStopId": "bottle-cross-15",
-          "duration": 3000,
+          "duration": 6000,
           "x": 440,
           "y": 100,
           "isBusStop": true
         },
         {
           "busStopId": "vegetable-choice-16",
-          "duration": 3000,
+          "duration": 6000,
           "x": 750,
           "y": 80,
           "isBusStop": true
