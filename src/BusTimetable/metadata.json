@@ -5,122 +5,104 @@
     {
       "id": "iron-lazy-0",
       "color": "#33FA3C",
-      "x": 641,
-      "y": 80
+      "x": 40,
+      "y": 120
     },
     {
       "id": "street-century-1",
       "color": "#847BAF",
-      "x": 646,
-      "y": 565
+      "x": 250,
+      "y": 100
     },
     {
       "id": "lend-sheet-2",
       "color": "#CF3FE3",
-      "x": 242,
-      "y": 161
+      "x": 200,
+      "y": 200
     },
     {
       "id": "bank-most-3",
       "color": "#4C6E29",
-      "x": 560,
-      "y": 322
+      "x": 400,
+      "y": 400
     },
     {
       "id": "lip-hope-4",
       "color": "#E862D5",
-      "x": 80,
-      "y": 160
+      "x": 600,
+      "y": 500
     },
     {
       "id": "cup-people-5",
       "color": "#30A2EE",
-      "x": 160,
-      "y": 161
+      "x": 560,
+      "y": 600
     },
     {
       "id": "ball-cost-6",
       "color": "#213882",
-      "x": 483,
-      "y": 644
+      "x": 750,
+      "y": 750
     },
     {
       "id": "people-down-7",
       "color": "#0A016E",
-      "x": 400,
-      "y": 560
+      "x": 40,
+      "y": 480
     },
     {
       "id": "football-meet-8",
       "color": "#0A086C",
-      "x": 323,
-      "y": 482
+      "x": 200,
+      "y": 400
     },
     {
       "id": "stay-east-9",
       "color": "#EDDBB9",
-      "x": 240,
-      "y": 565
+      "x": 550,
+      "y": 200
     },
     {
       "id": "come-prince-10",
       "color": "#D8AC9B",
-      "x": 80,
-      "y": 240
+      "x": 750,
+      "y": 380
     },
     {
       "id": "please-his-11",
       "color": "#55AB1E",
-      "x": 402,
-      "y": 80
+      "x": 40,
+      "y": 580
     },
     {
       "id": "problem-bite-12",
       "color": "#71B3DF",
       "x": 160,
-      "y": 322
+      "y": 720
     },
     {
       "id": "heart-true-13",
       "color": "#BF9DC3",
-      "x": 560,
-      "y": 483
+      "x": 200,
+      "y": 500
     },
     {
       "id": "cost-watch-14",
       "color": "#710C98",
-      "x": 401,
-      "y": 161
+      "x": 500,
+      "y": 720
     },
     {
       "id": "bottle-cross-15",
       "color": "#DF8554",
-      "x": 240,
-      "y": 322
+      "x": 440,
+      "y": 100
     },
     {
       "id": "vegetable-choice-16",
       "color": "#990130",
-      "x": 240,
-      "y": 646
-    },
-    {
-      "id": "ugly-cup-17",
-      "color": "#5F05EC",
-      "x": 80,
-      "y": 563
-    },
-    {
-      "id": "dry-problem-18",
-      "color": "#ACAC63",
-      "x": 647,
-      "y": 480
-    },
-    {
-      "id": "male-heavy-19",
-      "color": "#4ACD85",
-      "x": 482,
-      "y": 483
+      "x": 750,
+      "y": 80
     }
   ],
   "routes": [
@@ -129,73 +111,52 @@
       "color": "#660B2F",
       "path": [
         {
-          "x": 240,
-          "y": 646,
+          "busStopId": "iron-lazy-0",
           "duration": 0,
-          "busStopId": "vegetable-choice-16",
+          "x": 40,
+          "y": 120,
           "isBusStop": true
         },
         {
-          "x": 240,
-          "y": 565,
-          "duration": 810,
-          "busStopId": "stay-east-9",
+          "busStopId": "street-century-1",
+          "duration": 3000,
+          "x": 250,
+          "y": 100,
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 240,
-          "duration": 3620,
-          "busStopId": "come-prince-10",
+          "busStopId": "lend-sheet-2",
+          "duration": 3000,
+          "x": 200,
+          "y": 200,
           "isBusStop": true
         },
         {
-          "x": 647,
-          "y": 480,
-          "duration": 6150,
-          "busStopId": "dry-problem-18",
+          "busStopId": "bank-most-3",
+          "duration": 3000,
+          "x": 400,
+          "y": 400,
           "isBusStop": true
         },
         {
-          "x": 482,
-          "y": 483,
-          "duration": 1650,
-          "busStopId": "male-heavy-19",
+          "busStopId": "lip-hope-4",
+          "duration": 3000,
+          "x": 600,
+          "y": 500,
           "isBusStop": true
         },
         {
+          "busStopId": "cup-people-5",
+          "duration": 3000,
           "x": 560,
-          "y": 483,
-          "duration": 780,
-          "busStopId": "heart-true-13",
+          "y": 600,
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 563,
-          "duration": 4860,
-          "busStopId": "ugly-cup-17",
-          "isBusStop": true
-        },
-        {
-          "x": 323,
-          "y": 482,
-          "duration": 2560,
-          "busStopId": "football-meet-8",
-          "isBusStop": true
-        },
-        {
-          "x": 240,
-          "y": 322,
-          "duration": 1800,
-          "busStopId": "bottle-cross-15",
-          "isBusStop": true
-        },
-        {
-          "x": 160,
-          "y": 322,
-          "duration": 800,
-          "busStopId": "problem-bite-12",
+          "busStopId": "ball-cost-6",
+          "duration": 3000,
+          "x": 750,
+          "y": 750,
           "isBusStop": true
         }
       ]
@@ -205,73 +166,45 @@
       "color": "#66DBB6",
       "path": [
         {
-          "x": 240,
-          "y": 322,
+          "busStopId": "people-down-7",
           "duration": 0,
-          "busStopId": "bottle-cross-15",
-          "isBusStop": true
-        },
-        {
-          "x": 80,
-          "y": 563,
-          "duration": 2890,
-          "busStopId": "ugly-cup-17",
-          "isBusStop": true
-        },
-        {
-          "x": 242,
-          "y": 161,
-          "duration": 4330,
-          "busStopId": "lend-sheet-2",
-          "isBusStop": true
-        },
-        {
-          "x": 240,
-          "y": 565,
-          "duration": 4040,
-          "busStopId": "stay-east-9",
-          "isBusStop": true
-        },
-        {
-          "x": 482,
-          "y": 483,
-          "duration": 2550,
-          "busStopId": "male-heavy-19",
-          "isBusStop": true
-        },
-        {
-          "x": 160,
-          "y": 161,
-          "duration": 4550,
-          "busStopId": "cup-people-5",
-          "isBusStop": true
-        },
-        {
-          "x": 560,
-          "y": 322,
-          "duration": 4310,
-          "busStopId": "bank-most-3",
-          "isBusStop": true
-        },
-        {
-          "x": 647,
+          "x": 40,
           "y": 480,
-          "duration": 1800,
-          "busStopId": "dry-problem-18",
           "isBusStop": true
         },
         {
-          "x": 641,
-          "y": 80,
-          "duration": 4000,
-          "busStopId": "iron-lazy-0",
+          "busStopId": "football-meet-8",
+          "color": "#0A086C",
+          "x": 200,
+          "y": 400,
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 240,
-          "duration": 5830,
+          "busStopId": "bank-most-3",
+          "duration": 3000,
+          "x": 400,
+          "y": 400,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "stay-east-9",
+          "duration": 3000,
+          "x": 550,
+          "y": 200,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "lip-hope-4",
+          "duration": 3000,
+          "x": 600,
+          "y": 500,
+          "isBusStop": true
+        },
+        {
           "busStopId": "come-prince-10",
+          "duration": 3000,
+          "x": 750,
+          "y": 380,
           "isBusStop": true
         }
       ]
@@ -281,73 +214,52 @@
       "color": "#96D973",
       "path": [
         {
-          "x": 402,
-          "y": 80,
-          "duration": 0,
           "busStopId": "please-his-11",
+          "duration": 0,
+          "x": 40,
+          "y": 580,
           "isBusStop": true
         },
         {
-          "x": 401,
-          "y": 161,
-          "duration": 810,
-          "busStopId": "cost-watch-14",
-          "isBusStop": true
-        },
-        {
-          "x": 482,
-          "y": 483,
-          "duration": 3320,
-          "busStopId": "male-heavy-19",
-          "isBusStop": true
-        },
-        {
-          "x": 240,
-          "y": 646,
-          "duration": 2910,
-          "busStopId": "vegetable-choice-16",
-          "isBusStop": true
-        },
-        {
-          "x": 160,
-          "y": 161,
-          "duration": 4910,
-          "busStopId": "cup-people-5",
-          "isBusStop": true
-        },
-        {
-          "x": 240,
-          "y": 322,
-          "duration": 1790,
-          "busStopId": "bottle-cross-15",
-          "isBusStop": true
-        },
-        {
-          "x": 560,
-          "y": 483,
-          "duration": 3580,
-          "busStopId": "heart-true-13",
-          "isBusStop": true
-        },
-        {
-          "x": 483,
-          "y": 644,
-          "duration": 1780,
-          "busStopId": "ball-cost-6",
-          "isBusStop": true
-        },
-        {
-          "x": 160,
-          "y": 322,
-          "duration": 4560,
           "busStopId": "problem-bite-12",
+          "duration": 3000,
+          "x": 160,
+          "y": 720,
           "isBusStop": true
         },
         {
-          "x": 323,
-          "y": 482,
-          "duration": 2280,
-          "busStopId": "football-meet-8",
+          "busStopId": "heart-true-13",
+          "duration": 3000,
+          "x": 200,
+          "y": 500,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "cost-watch-14",
+          "duration": 3000,
+          "x": 500,
+          "y": 720,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "bank-most-3",
+          "duration": 3000,
+          "x": 400,
+          "y": 400,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "bottle-cross-15",
+          "duration": 3000,
+          "x": 440,
+          "y": 100,
+          "isBusStop": true
+        },
+        {
+          "busStopId": "vegetable-choice-16",
+          "duration": 3000,
+          "x": 750,
+          "y": 80,
           "isBusStop": true
         }
       ]
