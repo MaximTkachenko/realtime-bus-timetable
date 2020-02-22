@@ -26,6 +26,7 @@ namespace BusTimetable.Generator.Generators
                     .Select(x => x.Trim()).Where(x => x.Length > 1));
             }
             Shuffle(Words);
+
         }
 
         public static string GetId(int number)
@@ -38,8 +39,8 @@ namespace BusTimetable.Generator.Generators
                     continue;
                 }
 
-                IssuedIdentifiers.Add($"{id}-{number}");
-                return id;
+                IssuedIdentifiers.Add(id);
+                return $"{id}-{number}";
             }
         }
 

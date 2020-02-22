@@ -3,351 +3,351 @@
   "height": 800,
   "busStops": [
     {
-      "id": "earn-old",
-      "color": "#ECB855",
-      "x": 80,
-      "y": 321
+      "id": "iron-lazy-0",
+      "color": "#33FA3C",
+      "x": 641,
+      "y": 80
     },
     {
-      "id": "shout-method",
-      "color": "#CC2E7D",
+      "id": "street-century-1",
+      "color": "#847BAF",
+      "x": 646,
+      "y": 565
+    },
+    {
+      "id": "lend-sheet-2",
+      "color": "#CF3FE3",
       "x": 242,
-      "y": 485
+      "y": 161
     },
     {
-      "id": "full-son",
-      "color": "#5000C9",
-      "x": 80,
-      "y": 80
-    },
-    {
-      "id": "pour-piano",
-      "color": "#A53071",
-      "x": 322,
-      "y": 642
-    },
-    {
-      "id": "across-shape",
-      "color": "#6884F5",
-      "x": 80,
-      "y": 560
-    },
-    {
-      "id": "provide-control",
-      "color": "#321858",
-      "x": 484,
-      "y": 402
-    },
-    {
-      "id": "fox-popular",
-      "color": "#BBC8D3",
-      "x": 241,
-      "y": 566
-    },
-    {
-      "id": "popular-well",
-      "color": "#4DC389",
-      "x": 640,
-      "y": 241
-    },
-    {
-      "id": "corner-expensive",
-      "color": "#AE01D1",
-      "x": 160,
-      "y": 562
-    },
-    {
-      "id": "careful-knock",
-      "color": "#C07A84",
-      "x": 561,
-      "y": 242
-    },
-    {
-      "id": "care-marry",
-      "color": "#24760A",
-      "x": 484,
-      "y": 640
-    },
-    {
-      "id": "past-like",
-      "color": "#0A3E85",
-      "x": 484,
-      "y": 80
-    },
-    {
-      "id": "none-mix",
-      "color": "#87E783",
-      "x": 647,
-      "y": 641
-    },
-    {
-      "id": "party-side",
-      "color": "#6B0866",
+      "id": "bank-most-3",
+      "color": "#4C6E29",
       "x": 560,
-      "y": 320
+      "y": 322
     },
     {
-      "id": "appear-can",
-      "color": "#D6397A",
+      "id": "lip-hope-4",
+      "color": "#E862D5",
       "x": 80,
-      "y": 643
-    },
-    {
-      "id": "wash-usually",
-      "color": "#B34DFC",
-      "x": 161,
-      "y": 80
-    },
-    {
-      "id": "tidy-wear",
-      "color": "#1C2134",
-      "x": 80,
-      "y": 402
-    },
-    {
-      "id": "exercise-first",
-      "color": "#CE976C",
-      "x": 484,
       "y": 160
     },
     {
-      "id": "thing-tie",
-      "color": "#8F9F2C",
-      "x": 644,
+      "id": "cup-people-5",
+      "color": "#30A2EE",
+      "x": 160,
+      "y": 161
+    },
+    {
+      "id": "ball-cost-6",
+      "color": "#213882",
+      "x": 483,
+      "y": 644
+    },
+    {
+      "id": "people-down-7",
+      "color": "#0A016E",
+      "x": 400,
       "y": 560
     },
     {
-      "id": "duck-just",
-      "color": "#221E9E",
-      "x": 643,
-      "y": 160
+      "id": "football-meet-8",
+      "color": "#0A086C",
+      "x": 323,
+      "y": 482
+    },
+    {
+      "id": "stay-east-9",
+      "color": "#EDDBB9",
+      "x": 240,
+      "y": 565
+    },
+    {
+      "id": "come-prince-10",
+      "color": "#D8AC9B",
+      "x": 80,
+      "y": 240
+    },
+    {
+      "id": "please-his-11",
+      "color": "#55AB1E",
+      "x": 402,
+      "y": 80
+    },
+    {
+      "id": "problem-bite-12",
+      "color": "#71B3DF",
+      "x": 160,
+      "y": 322
+    },
+    {
+      "id": "heart-true-13",
+      "color": "#BF9DC3",
+      "x": 560,
+      "y": 483
+    },
+    {
+      "id": "cost-watch-14",
+      "color": "#710C98",
+      "x": 401,
+      "y": 161
+    },
+    {
+      "id": "bottle-cross-15",
+      "color": "#DF8554",
+      "x": 240,
+      "y": 322
+    },
+    {
+      "id": "vegetable-choice-16",
+      "color": "#990130",
+      "x": 240,
+      "y": 646
+    },
+    {
+      "id": "ugly-cup-17",
+      "color": "#5F05EC",
+      "x": 80,
+      "y": 563
+    },
+    {
+      "id": "dry-problem-18",
+      "color": "#ACAC63",
+      "x": 647,
+      "y": 480
+    },
+    {
+      "id": "male-heavy-19",
+      "color": "#4ACD85",
+      "x": 482,
+      "y": 483
     }
   ],
   "routes": [
     {
-      "id": "pencil-tool",
-      "color": "#FAB844",
+      "id": "method-first-0",
+      "color": "#660B2F",
       "path": [
         {
-          "x": 484,
-          "y": 160,
+          "x": 240,
+          "y": 646,
           "duration": 0,
-          "busStopId": "exercise-first",
+          "busStopId": "vegetable-choice-16",
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 321,
-          "duration": 4340,
-          "busStopId": "earn-old",
-          "isBusStop": true
-        },
-        {
-          "x": 80,
-          "y": 402,
+          "x": 240,
+          "y": 565,
           "duration": 810,
-          "busStopId": "tidy-wear",
+          "busStopId": "stay-east-9",
           "isBusStop": true
         },
         {
           "x": 80,
-          "y": 560,
-          "duration": 1580,
-          "busStopId": "across-shape",
+          "y": 240,
+          "duration": 3620,
+          "busStopId": "come-prince-10",
           "isBusStop": true
         },
         {
-          "x": 242,
-          "y": 485,
-          "duration": 1780,
-          "busStopId": "shout-method",
+          "x": 647,
+          "y": 480,
+          "duration": 6150,
+          "busStopId": "dry-problem-18",
           "isBusStop": true
         },
         {
-          "x": 561,
-          "y": 242,
-          "duration": 4010,
-          "busStopId": "careful-knock",
-          "isBusStop": true
-        },
-        {
-          "x": 161,
-          "y": 80,
-          "duration": 4310,
-          "busStopId": "wash-usually",
-          "isBusStop": true
-        },
-        {
-          "x": 322,
-          "y": 642,
-          "duration": 5840,
-          "busStopId": "pour-piano",
+          "x": 482,
+          "y": 483,
+          "duration": 1650,
+          "busStopId": "male-heavy-19",
           "isBusStop": true
         },
         {
           "x": 560,
-          "y": 320,
-          "duration": 4000,
-          "busStopId": "party-side",
+          "y": 483,
+          "duration": 780,
+          "busStopId": "heart-true-13",
           "isBusStop": true
         },
         {
-          "x": 643,
-          "y": 160,
+          "x": 80,
+          "y": 563,
+          "duration": 4860,
+          "busStopId": "ugly-cup-17",
+          "isBusStop": true
+        },
+        {
+          "x": 323,
+          "y": 482,
+          "duration": 2560,
+          "busStopId": "football-meet-8",
+          "isBusStop": true
+        },
+        {
+          "x": 240,
+          "y": 322,
           "duration": 1800,
-          "busStopId": "duck-just",
+          "busStopId": "bottle-cross-15",
+          "isBusStop": true
+        },
+        {
+          "x": 160,
+          "y": 322,
+          "duration": 800,
+          "busStopId": "problem-bite-12",
           "isBusStop": true
         }
       ]
     },
     {
-      "id": "storm-who",
-      "color": "#00F941",
+      "id": "repeat-obey-1",
+      "color": "#66DBB6",
       "path": [
         {
-          "x": 561,
-          "y": 242,
+          "x": 240,
+          "y": 322,
           "duration": 0,
-          "busStopId": "careful-knock",
+          "busStopId": "bottle-cross-15",
+          "isBusStop": true
+        },
+        {
+          "x": 80,
+          "y": 563,
+          "duration": 2890,
+          "busStopId": "ugly-cup-17",
           "isBusStop": true
         },
         {
           "x": 242,
-          "y": 485,
-          "duration": 4010,
-          "busStopId": "shout-method",
+          "y": 161,
+          "duration": 4330,
+          "busStopId": "lend-sheet-2",
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 80,
-          "duration": 4360,
-          "busStopId": "full-son",
+          "x": 240,
+          "y": 565,
+          "duration": 4040,
+          "busStopId": "stay-east-9",
           "isBusStop": true
         },
         {
-          "x": 322,
-          "y": 642,
-          "duration": 6110,
-          "busStopId": "pour-piano",
-          "isBusStop": true
-        },
-        {
-          "x": 80,
-          "y": 560,
+          "x": 482,
+          "y": 483,
           "duration": 2550,
-          "busStopId": "across-shape",
+          "busStopId": "male-heavy-19",
+          "isBusStop": true
+        },
+        {
+          "x": 160,
+          "y": 161,
+          "duration": 4550,
+          "busStopId": "cup-people-5",
           "isBusStop": true
         },
         {
           "x": 560,
-          "y": 320,
-          "duration": 5360,
-          "busStopId": "party-side",
+          "y": 322,
+          "duration": 4310,
+          "busStopId": "bank-most-3",
           "isBusStop": true
         },
         {
-          "x": 161,
+          "x": 647,
+          "y": 480,
+          "duration": 1800,
+          "busStopId": "dry-problem-18",
+          "isBusStop": true
+        },
+        {
+          "x": 641,
           "y": 80,
-          "duration": 4650,
-          "busStopId": "wash-usually",
-          "isBusStop": true
-        },
-        {
-          "x": 644,
-          "y": 560,
-          "duration": 6800,
-          "busStopId": "thing-tie",
-          "isBusStop": true
-        },
-        {
-          "x": 484,
-          "y": 80,
-          "duration": 5050,
-          "busStopId": "past-like",
+          "duration": 4000,
+          "busStopId": "iron-lazy-0",
           "isBusStop": true
         },
         {
           "x": 80,
-          "y": 402,
-          "duration": 5160,
-          "busStopId": "tidy-wear",
+          "y": 240,
+          "duration": 5830,
+          "busStopId": "come-prince-10",
           "isBusStop": true
         }
       ]
     },
     {
-      "id": "too-more",
-      "color": "#AABB9C",
+      "id": "nine-careless-2",
+      "color": "#96D973",
       "path": [
         {
-          "x": 484,
-          "y": 402,
+          "x": 402,
+          "y": 80,
           "duration": 0,
-          "busStopId": "provide-control",
+          "busStopId": "please-his-11",
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 321,
-          "duration": 4120,
-          "busStopId": "earn-old",
+          "x": 401,
+          "y": 161,
+          "duration": 810,
+          "busStopId": "cost-watch-14",
           "isBusStop": true
         },
         {
-          "x": 640,
-          "y": 241,
-          "duration": 5650,
-          "busStopId": "popular-well",
+          "x": 482,
+          "y": 483,
+          "duration": 3320,
+          "busStopId": "male-heavy-19",
           "isBusStop": true
         },
         {
-          "x": 561,
-          "y": 242,
-          "duration": 790,
-          "busStopId": "careful-knock",
+          "x": 240,
+          "y": 646,
+          "duration": 2910,
+          "busStopId": "vegetable-choice-16",
           "isBusStop": true
         },
         {
-          "x": 484,
-          "y": 640,
-          "duration": 4050,
-          "busStopId": "care-marry",
+          "x": 160,
+          "y": 161,
+          "duration": 4910,
+          "busStopId": "cup-people-5",
           "isBusStop": true
         },
         {
-          "x": 242,
-          "y": 485,
-          "duration": 2870,
-          "busStopId": "shout-method",
+          "x": 240,
+          "y": 322,
+          "duration": 1790,
+          "busStopId": "bottle-cross-15",
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 560,
+          "x": 560,
+          "y": 483,
+          "duration": 3580,
+          "busStopId": "heart-true-13",
+          "isBusStop": true
+        },
+        {
+          "x": 483,
+          "y": 644,
           "duration": 1780,
-          "busStopId": "across-shape",
+          "busStopId": "ball-cost-6",
           "isBusStop": true
         },
         {
-          "x": 322,
-          "y": 642,
-          "duration": 2550,
-          "busStopId": "pour-piano",
+          "x": 160,
+          "y": 322,
+          "duration": 4560,
+          "busStopId": "problem-bite-12",
           "isBusStop": true
         },
         {
-          "x": 80,
-          "y": 643,
-          "duration": 2420,
-          "busStopId": "appear-can",
-          "isBusStop": true
-        },
-        {
-          "x": 560,
-          "y": 320,
-          "duration": 5780,
-          "busStopId": "party-side",
+          "x": 323,
+          "y": 482,
+          "duration": 2280,
+          "busStopId": "football-meet-8",
           "isBusStop": true
         }
       ]
