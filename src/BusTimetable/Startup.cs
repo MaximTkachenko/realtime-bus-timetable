@@ -1,3 +1,4 @@
+using BusTimetable.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,8 @@ namespace BusTimetable
                             .AllowAnyHeader();
                     });
             });
+
+            services.AddSingleton<IMetadataService, MetadataService>();
 
             services.AddControllers();
             services.AddSignalR();
