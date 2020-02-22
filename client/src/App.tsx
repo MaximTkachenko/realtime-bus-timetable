@@ -54,7 +54,7 @@ class App extends Component<AppProps, AppState> {
       </div>;
     }
     else{
-      screen = <RoutesScreen metadata={this.state.metadata} />;
+      screen = <RoutesScreen metadata={this.state.metadata} server={this.state.server} />;
     }
 
     return screen;

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
+using BusTimetable.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
@@ -31,10 +32,10 @@ namespace BusTimetable.Controllers
             return Ok(Metadata);
         }
 
-        [HttpPost("location")]
-        public IActionResult Location(string routeId, int x, int y)
+        [HttpPost("{routeId}/location")]
+        public IActionResult Location(string routeId, [FromBody]Location location)
         {
-            //todo return bus stops and routes
+            _logger.LogInformation("{routeId}: {x}, {y}", routeId, location.X, location.Y);
             return Ok();
         }
     }
