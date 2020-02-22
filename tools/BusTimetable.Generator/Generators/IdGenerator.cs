@@ -10,6 +10,7 @@ namespace BusTimetable.Generator.Generators
     {
         private static readonly List<string> Words = new List<string>();
         private static readonly Random Rnd = new Random(Guid.NewGuid().GetHashCode());
+        private static readonly HashSet<string> IssuedIdentifiers = new HashSet<string>();
 
         static IdGenerator()
         {
@@ -21,15 +22,25 @@ namespace BusTimetable.Generator.Generators
                     continue;
                 }
 
-                Words.AddRange(line.Split(new []{',', '.'}, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()));
+                Words.AddRange(line.Split(new []{',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => x.Trim()).Where(x => x.Length > 1));
             }
             Shuffle(Words);
-
         }
 
         public static string GetId(int number)
         {
-            return $"{Words[Rnd.Next(0, Words.Count)]}-{Words[Rnd.Next(0, Words.Count)]}-{number}";
+            while (true)
+            {
+                var id = $"{Words[Rnd.Next(0, Words.Count)]}-{Words[Rnd.Next(0, Words.Count)]}";
+                if (IssuedIdentifiers.Contains(id))
+                {
+                    continue;
+                }
+
+                IssuedIdentifiers.Add($"{id}-{number}");
+                return id;
+            }
         }
 
 

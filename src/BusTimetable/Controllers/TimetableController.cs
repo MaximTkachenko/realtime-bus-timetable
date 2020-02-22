@@ -1,12 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using System.Text.Json;
-using BusTimetable.Models;
+﻿using BusTimetable.Models;
 using BusTimetable.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Models;
 
 namespace BusTimetable.Controllers
 {

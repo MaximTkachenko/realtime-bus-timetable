@@ -3,10 +3,11 @@ import {Root} from './Metadata';
 
 export default class RoutesRendere{
     init(){
-        const busStopRadius: number = 40;
+        const busStopRadius: number = 36;
         const busStopOffset: number = busStopRadius / 2;
         const busRadius: number = 20;
         const busOffset: number = busRadius / 2;
+        const timeSpentOnBusStop: number = 500;
         
         document.addEventListener("routesReady", (e: any) => {
             let data: Root = e.detail.metadata;
@@ -34,7 +35,7 @@ export default class RoutesRendere{
             for(let i = 0; i < data.busStops.length; i++) {
                 const stop = data.busStops[i];
                 draw.circle(busStopRadius).x(stop.x - busStopOffset).y(stop.y - busStopOffset)
-                    .stroke({ color: 'black'}).fill(stop.color)
+                    .stroke({ color: 'black', width: 4}).fill(stop.color)
                     .add(draw.element('title').words(stop.id))
                     .attr('id', stop.id)
                     .click((e: any) => {
@@ -44,15 +45,16 @@ export default class RoutesRendere{
             }
             
             const buses: SVG.Circle[] = [];
-            const animateConfig = { ease: '--', duration: 6000, delay: 0 };
+            
             for(let i = 0; i < data.routes.length; i++) {
                 const route = data.routes[i];
 
                 const routeCircle = draw.circle(busRadius).x(route.path[0].x - busOffset).y(route.path[0].y - busOffset)
-                    .fill(data.routes[i].color).stroke({ color: 'black'}).attr('id', route.id);
+                    .fill(data.routes[i].color).stroke({ color: 'white', width: 2}).attr('id', route.id);
                 buses.push(routeCircle);
 
                 for(let j = 1; j < route.path.length; j++) {
+                    const animateConfig = { ease: '--', duration: route.path[j].duration, delay: timeSpentOnBusStop };
                     routeCircle.animate(animateConfig).move(route.path[j].x - busOffset, route.path[j].y - busOffset);
                 }
            }

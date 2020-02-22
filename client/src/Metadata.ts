@@ -14,6 +14,7 @@ export type Route = {
 export type Point = {
     x: number,
     y: number,
+    duration: number,
     busStopId: string,
     isBusStop: boolean
 }

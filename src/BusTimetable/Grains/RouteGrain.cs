@@ -5,7 +5,7 @@ using Orleans;
 
 namespace BusTimetable.Grains
 {
-    public class BusGrain : Grain, IBus
+    public class RouteGrain : Grain, IRoute
     {
         //needs bus route
         //bus stops tracking

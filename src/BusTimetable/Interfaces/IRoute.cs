@@ -6,7 +6,7 @@ using Orleans;
 
 namespace BusTimetable.Interfaces
 {
-    public interface IBus : IGrainWithStringKey
+    public interface IRoute : IGrainWithStringKey
     {
         Task UpdateLocation(int x, int y);
     }

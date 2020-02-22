@@ -1,395 +1,353 @@
 {
-  "width": 1000,
+  "width": 800,
   "height": 800,
   "busStops": [
     {
-      "id": "spoon-successful-0",
-      "color": "#63AC28",
-      "x": 644,
-      "y": 341
+      "id": "earn-old",
+      "color": "#ECB855",
+      "x": 80,
+      "y": 321
     },
     {
-      "id": "examination-hers-1",
-      "color": "#9DBDCD",
-      "x": 486,
-      "y": 139
+      "id": "shout-method",
+      "color": "#CC2E7D",
+      "x": 242,
+      "y": 485
     },
     {
-      "id": "school-job-2",
-      "color": "#FD851B",
-      "x": 816,
-      "y": 721
+      "id": "full-son",
+      "color": "#5000C9",
+      "x": 80,
+      "y": 80
     },
     {
-      "id": "funny-before-3",
-      "color": "#1CF511",
-      "x": 716,
-      "y": 438
+      "id": "pour-piano",
+      "color": "#A53071",
+      "x": 322,
+      "y": 642
     },
     {
-      "id": "base-mistake-4",
-      "color": "#0D30CC",
-      "x": 263,
-      "y": 356
+      "id": "across-shape",
+      "color": "#6884F5",
+      "x": 80,
+      "y": 560
     },
     {
-      "id": "method-every-5",
-      "color": "#6AFF54",
-      "x": 404,
-      "y": 667
+      "id": "provide-control",
+      "color": "#321858",
+      "x": 484,
+      "y": 402
     },
     {
-      "id": "plate-get-6",
-      "color": "#518770",
-      "x": 975,
-      "y": 386
+      "id": "fox-popular",
+      "color": "#BBC8D3",
+      "x": 241,
+      "y": 566
     },
     {
-      "id": "possible-lazy-7",
-      "color": "#48A085",
-      "x": 746,
-      "y": 177
+      "id": "popular-well",
+      "color": "#4DC389",
+      "x": 640,
+      "y": 241
     },
     {
-      "id": "behave-hill-8",
-      "color": "#9C2E69",
-      "x": 7,
-      "y": 194
+      "id": "corner-expensive",
+      "color": "#AE01D1",
+      "x": 160,
+      "y": 562
     },
     {
-      "id": "forget-nor-9",
-      "color": "#9EA8C8",
-      "x": 342,
-      "y": 424
+      "id": "careful-knock",
+      "color": "#C07A84",
+      "x": 561,
+      "y": 242
     },
     {
-      "id": "hammer-breakfast-10",
-      "color": "#C94F1A",
-      "x": 355,
-      "y": 345
+      "id": "care-marry",
+      "color": "#24760A",
+      "x": 484,
+      "y": 640
     },
     {
-      "id": "green-point-11",
-      "color": "#729A24",
-      "x": 253,
-      "y": 204
+      "id": "past-like",
+      "color": "#0A3E85",
+      "x": 484,
+      "y": 80
     },
     {
-      "id": "room-find-12",
-      "color": "#8574A4",
-      "x": 891,
-      "y": 18
-    },
-    {
-      "id": "hour-her-13",
-      "color": "#C90C29",
-      "x": 957,
-      "y": 73
-    },
-    {
-      "id": "room-bath-14",
-      "color": "#E0871E",
-      "x": 59,
-      "y": 721
-    },
-    {
-      "id": "event-tomorrow-15",
-      "color": "#7B597F",
+      "id": "none-mix",
+      "color": "#87E783",
       "x": 647,
-      "y": 790
+      "y": 641
     },
     {
-      "id": "space-sad-16",
-      "color": "#E98D92",
-      "x": 921,
-      "y": 685
+      "id": "party-side",
+      "color": "#6B0866",
+      "x": 560,
+      "y": 320
     },
     {
-      "id": "friendly-cloud-17",
-      "color": "#486360",
-      "x": 313,
-      "y": 386
+      "id": "appear-can",
+      "color": "#D6397A",
+      "x": 80,
+      "y": 643
     },
     {
-      "id": "teach-third-18",
-      "color": "#6B4B01",
-      "x": 234,
-      "y": 465
+      "id": "wash-usually",
+      "color": "#B34DFC",
+      "x": 161,
+      "y": 80
     },
     {
-      "id": "buy-do-19",
-      "color": "#D0799F",
-      "x": 708,
-      "y": 159
+      "id": "tidy-wear",
+      "color": "#1C2134",
+      "x": 80,
+      "y": 402
+    },
+    {
+      "id": "exercise-first",
+      "color": "#CE976C",
+      "x": 484,
+      "y": 160
+    },
+    {
+      "id": "thing-tie",
+      "color": "#8F9F2C",
+      "x": 644,
+      "y": 560
+    },
+    {
+      "id": "duck-just",
+      "color": "#221E9E",
+      "x": 643,
+      "y": 160
     }
   ],
   "routes": [
     {
-      "id": "island-sail-0",
-      "color": "#E013DE",
+      "id": "pencil-tool",
+      "color": "#FAB844",
       "path": [
         {
-          "x": 355,
-          "y": 345,
-          "busStopId": "hammer-breakfast-10",
+          "x": 484,
+          "y": 160,
+          "duration": 0,
+          "busStopId": "exercise-first",
           "isBusStop": true
         },
         {
-          "x": 816,
-          "y": 721,
-          "busStopId": "school-job-2",
+          "x": 80,
+          "y": 321,
+          "duration": 4340,
+          "busStopId": "earn-old",
           "isBusStop": true
         },
         {
-          "x": 647,
-          "y": 790,
-          "busStopId": "event-tomorrow-15",
+          "x": 80,
+          "y": 402,
+          "duration": 810,
+          "busStopId": "tidy-wear",
           "isBusStop": true
         },
         {
-          "x": 313,
-          "y": 386,
-          "busStopId": "friendly-cloud-17",
+          "x": 80,
+          "y": 560,
+          "duration": 1580,
+          "busStopId": "across-shape",
           "isBusStop": true
         },
         {
-          "x": 975,
-          "y": 386,
-          "busStopId": "plate-get-6",
+          "x": 242,
+          "y": 485,
+          "duration": 1780,
+          "busStopId": "shout-method",
           "isBusStop": true
         },
         {
-          "x": 253,
-          "y": 204,
-          "busStopId": "green-point-11",
+          "x": 561,
+          "y": 242,
+          "duration": 4010,
+          "busStopId": "careful-knock",
           "isBusStop": true
         },
         {
-          "x": 644,
-          "y": 341,
-          "busStopId": "spoon-successful-0",
+          "x": 161,
+          "y": 80,
+          "duration": 4310,
+          "busStopId": "wash-usually",
           "isBusStop": true
         },
         {
-          "x": 957,
-          "y": 73,
-          "busStopId": "hour-her-13",
+          "x": 322,
+          "y": 642,
+          "duration": 5840,
+          "busStopId": "pour-piano",
           "isBusStop": true
         },
         {
-          "x": 7,
-          "y": 194,
-          "busStopId": "behave-hill-8",
+          "x": 560,
+          "y": 320,
+          "duration": 4000,
+          "busStopId": "party-side",
           "isBusStop": true
         },
         {
-          "x": 486,
-          "y": 139,
-          "busStopId": "examination-hers-1",
-          "isBusStop": true
-        },
-        {
-          "x": 708,
-          "y": 159,
-          "busStopId": "buy-do-19",
-          "isBusStop": true
-        },
-        {
-          "x": 921,
-          "y": 685,
-          "busStopId": "space-sad-16",
-          "isBusStop": true
-        },
-        {
-          "x": 59,
-          "y": 721,
-          "busStopId": "room-bath-14",
-          "isBusStop": true
-        },
-        {
-          "x": 234,
-          "y": 465,
-          "busStopId": "teach-third-18",
+          "x": 643,
+          "y": 160,
+          "duration": 1800,
+          "busStopId": "duck-just",
           "isBusStop": true
         }
       ]
     },
     {
-      "id": "control-lock-1",
-      "color": "#E089B3",
+      "id": "storm-who",
+      "color": "#00F941",
       "path": [
         {
-          "x": 263,
-          "y": 356,
-          "busStopId": "base-mistake-4",
+          "x": 561,
+          "y": 242,
+          "duration": 0,
+          "busStopId": "careful-knock",
           "isBusStop": true
         },
         {
-          "x": 816,
-          "y": 721,
-          "busStopId": "school-job-2",
+          "x": 242,
+          "y": 485,
+          "duration": 4010,
+          "busStopId": "shout-method",
           "isBusStop": true
         },
         {
-          "x": 957,
-          "y": 73,
-          "busStopId": "hour-her-13",
+          "x": 80,
+          "y": 80,
+          "duration": 4360,
+          "busStopId": "full-son",
           "isBusStop": true
         },
         {
-          "x": 342,
-          "y": 424,
-          "busStopId": "forget-nor-9",
+          "x": 322,
+          "y": 642,
+          "duration": 6110,
+          "busStopId": "pour-piano",
           "isBusStop": true
         },
         {
-          "x": 716,
-          "y": 438,
-          "busStopId": "funny-before-3",
+          "x": 80,
+          "y": 560,
+          "duration": 2550,
+          "busStopId": "across-shape",
           "isBusStop": true
         },
         {
-          "x": 355,
-          "y": 345,
-          "busStopId": "hammer-breakfast-10",
+          "x": 560,
+          "y": 320,
+          "duration": 5360,
+          "busStopId": "party-side",
           "isBusStop": true
         },
         {
-          "x": 708,
-          "y": 159,
-          "busStopId": "buy-do-19",
+          "x": 161,
+          "y": 80,
+          "duration": 4650,
+          "busStopId": "wash-usually",
           "isBusStop": true
         },
         {
-          "x": 404,
-          "y": 667,
-          "busStopId": "method-every-5",
+          "x": 644,
+          "y": 560,
+          "duration": 6800,
+          "busStopId": "thing-tie",
           "isBusStop": true
         },
         {
-          "x": 313,
-          "y": 386,
-          "busStopId": "friendly-cloud-17",
+          "x": 484,
+          "y": 80,
+          "duration": 5050,
+          "busStopId": "past-like",
           "isBusStop": true
         },
         {
-          "x": 234,
-          "y": 465,
-          "busStopId": "teach-third-18",
-          "isBusStop": true
-        },
-        {
-          "x": 253,
-          "y": 204,
-          "busStopId": "green-point-11",
-          "isBusStop": true
-        },
-        {
-          "x": 486,
-          "y": 139,
-          "busStopId": "examination-hers-1",
-          "isBusStop": true
-        },
-        {
-          "x": 746,
-          "y": 177,
-          "busStopId": "possible-lazy-7",
-          "isBusStop": true
-        },
-        {
-          "x": 975,
-          "y": 386,
-          "busStopId": "plate-get-6",
+          "x": 80,
+          "y": 402,
+          "duration": 5160,
+          "busStopId": "tidy-wear",
           "isBusStop": true
         }
       ]
     },
     {
-      "id": "wide-kitchen-2",
-      "color": "#4B08E9",
+      "id": "too-more",
+      "color": "#AABB9C",
       "path": [
         {
-          "x": 342,
-          "y": 424,
-          "busStopId": "forget-nor-9",
+          "x": 484,
+          "y": 402,
+          "duration": 0,
+          "busStopId": "provide-control",
           "isBusStop": true
         },
         {
-          "x": 253,
-          "y": 204,
-          "busStopId": "green-point-11",
+          "x": 80,
+          "y": 321,
+          "duration": 4120,
+          "busStopId": "earn-old",
           "isBusStop": true
         },
         {
-          "x": 234,
-          "y": 465,
-          "busStopId": "teach-third-18",
+          "x": 640,
+          "y": 241,
+          "duration": 5650,
+          "busStopId": "popular-well",
           "isBusStop": true
         },
         {
-          "x": 975,
-          "y": 386,
-          "busStopId": "plate-get-6",
+          "x": 561,
+          "y": 242,
+          "duration": 790,
+          "busStopId": "careful-knock",
           "isBusStop": true
         },
         {
-          "x": 7,
-          "y": 194,
-          "busStopId": "behave-hill-8",
+          "x": 484,
+          "y": 640,
+          "duration": 4050,
+          "busStopId": "care-marry",
           "isBusStop": true
         },
         {
-          "x": 644,
-          "y": 341,
-          "busStopId": "spoon-successful-0",
+          "x": 242,
+          "y": 485,
+          "duration": 2870,
+          "busStopId": "shout-method",
           "isBusStop": true
         },
         {
-          "x": 746,
-          "y": 177,
-          "busStopId": "possible-lazy-7",
+          "x": 80,
+          "y": 560,
+          "duration": 1780,
+          "busStopId": "across-shape",
           "isBusStop": true
         },
         {
-          "x": 921,
-          "y": 685,
-          "busStopId": "space-sad-16",
+          "x": 322,
+          "y": 642,
+          "duration": 2550,
+          "busStopId": "pour-piano",
           "isBusStop": true
         },
         {
-          "x": 647,
-          "y": 790,
-          "busStopId": "event-tomorrow-15",
+          "x": 80,
+          "y": 643,
+          "duration": 2420,
+          "busStopId": "appear-can",
           "isBusStop": true
         },
         {
-          "x": 313,
-          "y": 386,
-          "busStopId": "friendly-cloud-17",
-          "isBusStop": true
-        },
-        {
-          "x": 891,
-          "y": 18,
-          "busStopId": "room-find-12",
-          "isBusStop": true
-        },
-        {
-          "x": 59,
-          "y": 721,
-          "busStopId": "room-bath-14",
-          "isBusStop": true
-        },
-        {
-          "x": 816,
-          "y": 721,
-          "busStopId": "school-job-2",
-          "isBusStop": true
-        },
-        {
-          "x": 263,
-          "y": 356,
-          "busStopId": "base-mistake-4",
+          "x": 560,
+          "y": 320,
+          "duration": 5780,
+          "busStopId": "party-side",
           "isBusStop": true
         }
       ]

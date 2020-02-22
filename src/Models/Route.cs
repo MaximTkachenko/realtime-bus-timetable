@@ -12,6 +12,7 @@ namespace Models
         {
             [JsonPropertyName("x")] public int X { get; set; }
             [JsonPropertyName("y")] public int Y { get; set; }
+            [JsonPropertyName("duration")] public int Duration { get; set; }
             [JsonPropertyName("busStopId")] public string BusStopId { get; set; }
             [JsonPropertyName("isBusStop")] public bool IsBusStop => !string.IsNullOrEmpty(BusStopId);
         }

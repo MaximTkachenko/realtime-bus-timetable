@@ -9,20 +9,20 @@ namespace BusTimetable.Generator
 {
     class Program
     {
-        private const int Width = 1000;
-        private const int Height = 800;
+        private const int Size = 800;
         private const int BustStopsNumber = 20;
         private const int RoutesNumber = 3;
+        private const decimal Velocity = 0.1m; //pixels in milliseconds
 
         static void Main()
         {
-            var busStops = BusStopGenerator.Generate(Width, Height, BustStopsNumber);
-            var routes = RouteGenerator.Generate(busStops, Width, Height, RoutesNumber);
+            var busStops = BusStopGenerator.Generate(Size, BustStopsNumber);
+            var routes = RouteGenerator.Generate(busStops, Size, Velocity, RoutesNumber);
 
             var json = JsonSerializer.Serialize(new Root
             {
-                Width = Width,
-                Height = Height,
+                Width = Size,
+                Height = Size,
                 BusStops = busStops, 
                 Routes = routes
             }, new JsonSerializerOptions{WriteIndented = true});
