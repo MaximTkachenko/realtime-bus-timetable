@@ -21,7 +21,7 @@ export default class RoutesRendere{
 
                 let arr = '';
                 for(let j = 0; j < route.path.length; j++) {
-                    arr += `${route.path[j].x},${route.path[j].y}`;
+                    arr += `${data.busStops[route.path[j]].x},${data.busStops[route.path[j]].y}`;
                     if(j < route.path.length - 1){
                         arr += ' ';
                     }
@@ -29,7 +29,7 @@ export default class RoutesRendere{
                 }
                 draw.polyline(arr)
                     .fill('none')
-                    .stroke({ color: route.color, width: 2, linecap: 'round', linejoin: 'round' })
+                    .stroke({ color: route.color, width: 4, linecap: 'round', linejoin: 'round' })
             }            
             
             for(let i = 0; i < data.busStops.length; i++) {
@@ -48,14 +48,16 @@ export default class RoutesRendere{
             
             for(let i = 0; i < data.routes.length; i++) {
                 const route = data.routes[i];
+                const firstBusStop = data.busStops[route.path[0]];
 
-                const routeCircle = draw.circle(busRadius).x(route.path[0].x - busOffset).y(route.path[0].y - busOffset)
+                const routeCircle = draw.circle(busRadius).x(firstBusStop.x - busOffset).y(firstBusStop.y - busOffset)
                     .fill(data.routes[i].color).stroke({ color: 'white', width: 2}).attr('id', route.id);
                 buses.push(routeCircle);
 
                 for(let j = 1; j < route.path.length; j++) {
-                    const animateConfig = { ease: '--', duration: route.path[j].duration, delay: timeSpentOnBusStop };
-                    routeCircle.animate(animateConfig).move(route.path[j].x - busOffset, route.path[j].y - busOffset);
+                    const nextStop = data.busStops[route.path[j]];
+                    const animateConfig = { ease: '--', duration: 6000, delay: timeSpentOnBusStop };
+                    routeCircle.animate(animateConfig).move(nextStop.x - busOffset, nextStop.y - busOffset);
                 }
            }
 
