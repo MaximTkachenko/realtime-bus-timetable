@@ -1,6 +1,9 @@
 using System.Net;
+using System.Reflection;
+using BusTimetable.Grains;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Serilog;
@@ -16,6 +19,7 @@ namespace BusTimetable
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .MinimumLevel.Override("Orleans", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
@@ -42,6 +46,14 @@ namespace BusTimetable
                         .Configure<EndpointOptions>(opts =>
                         {
                             opts.AdvertisedIPAddress = IPAddress.Loopback;
+                        })
+                        .ConfigureApplicationParts(parts =>
+                        {
+                            //parts.AddApplicationPart(Assembly.GetExecutingAssembly()).WithReferences();
+                        })
+                        .ConfigureLogging(logging =>
+                        {
+                            logging.AddSerilog();
                         });
                 });
     }

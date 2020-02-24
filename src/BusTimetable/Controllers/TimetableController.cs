@@ -1,21 +1,23 @@
-﻿using BusTimetable.Models;
+﻿using System.Threading.Tasks;
+using BusTimetable.Interfaces;
+using BusTimetable.Models;
 using BusTimetable.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Orleans;
 
 namespace BusTimetable.Controllers
 {
     [ApiController]
     public class TimetableController : ControllerBase
     {
-        private readonly ILogger<TimetableController> _logger;
         private readonly IMetadataService _metadata;
+        private readonly IClusterClient _clusterClient;
 
-        public TimetableController(ILogger<TimetableController> logger,
-            IMetadataService metadata)
+        public TimetableController(IMetadataService metadata,
+            IClusterClient clusterClient)
         {
-            _logger = logger;
             _metadata = metadata;
+            _clusterClient = clusterClient;
         }
 
         [HttpGet("metadata")]
@@ -25,11 +27,10 @@ namespace BusTimetable.Controllers
         }
 
         [HttpPost("{routeId}/location")]
-        public IActionResult Location(string routeId, [FromBody]Location location)
+        public async Task<IActionResult> UpdateLocation(string routeId, [FromBody]Location location)
         {
-            _logger.LogInformation("{routeId}: {x}, {y}", routeId, location.X, location.Y);
-
-            //todo call grain
+            var routeGrain = _clusterClient.GetGrain<IRoute>(routeId);
+            await routeGrain.UpdateLocation(location.X, location.Y);
 
             return Ok();
         }

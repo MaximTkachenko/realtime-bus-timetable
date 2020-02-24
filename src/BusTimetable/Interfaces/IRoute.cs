@@ -5,6 +5,6 @@ namespace BusTimetable.Interfaces
 {
     public interface IRoute : IGrainWithStringKey
     {
-        Task UpdateLocation(int x, int y);
+        Task UpdateLocation(float x, float y);
     }
 }
