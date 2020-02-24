@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -8,5 +9,10 @@ namespace Models
         [JsonPropertyName("color")] public string Color { get; set; }
         [JsonPropertyName("x")] public int X { get; set; }
         [JsonPropertyName("y")] public int Y { get; set; }
+
+        public int GetDistance(BusStop anotherBusStop)
+        {
+            return (int)Math.Sqrt(Math.Pow(X - anotherBusStop.X, 2) + Math.Pow(Y - anotherBusStop.Y, 2));
+        }
     }
 }

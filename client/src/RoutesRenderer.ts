@@ -38,7 +38,7 @@ export default class RoutesRenderer{
 
            let arr = '';
            for(let j = 0; j < route.path.length; j++) {
-               arr += `${data.busStops[route.path[j]].x},${data.busStops[route.path[j]].y}`;
+               arr += `${data.busStops[route.path[j].busStopIndex].x},${data.busStops[route.path[j].busStopIndex].y}`;
                if(j < route.path.length - 1){
                    arr += ' ';
                }               
@@ -69,15 +69,15 @@ export default class RoutesRenderer{
             
         for(let i = 0; i < data.routes.length; i++) {
             const route = data.routes[i];
-            const firstBusStop = data.busStops[route.path[0]];
+            const firstBusStop = data.busStops[route.path[0].busStopIndex];
 
             const routeCircle = draw.circle(this.busRadius).x(firstBusStop.x - this.busOffset).y(firstBusStop.y - this.busOffset)
                 .fill(data.routes[i].color).stroke({ color: 'white', width: 2}).attr('id', route.id);
             buses.push(routeCircle);
 
             for(let j = 1; j < route.path.length; j++) {
-                const nextStop = data.busStops[route.path[j]];
-                const animateConfig = { ease: '--', duration: 6000, delay: this.timeSpentOnBusStop };
+                const nextStop = data.busStops[route.path[j].busStopIndex];
+                const animateConfig = { ease: '--', duration: route.path[j].duration, delay: this.timeSpentOnBusStop };
                 routeCircle.animate(animateConfig).move(nextStop.x - this.busOffset, nextStop.y - this.busOffset);
             }
         }

@@ -8,7 +8,12 @@ export type Root = {
 export type Route = {
     id: string,
     color: string,
-    path: number[]
+    path: Point[]
+}
+
+export type Point = {
+    busStopIndex: number,
+    duration: number
 }
 
 export type BusStop = {

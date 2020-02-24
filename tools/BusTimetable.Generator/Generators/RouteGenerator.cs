@@ -17,7 +17,7 @@ namespace BusTimetable.Generator.Generators
                 {
                     Id = IdGenerator.GetId(i),
                     Color = ColorHexGenerator.GetColor(),
-                    Path = new int[0]
+                    //Path = new int[0]
                 };
             }
 

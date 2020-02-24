@@ -6,6 +6,12 @@ namespace Models
     {
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("color")] public string Color { get; set; }
-        [JsonPropertyName("path")] public int[] Path { get; set; }
+        [JsonPropertyName("path")] public Point[] Path { get; set; }
+    }
+
+    public class Point
+    {
+        [JsonPropertyName("busStopIndex")] public int BusStopIndex { get; set; }
+        [JsonPropertyName("duration")] public int Duration { get; set; }
     }
 }
