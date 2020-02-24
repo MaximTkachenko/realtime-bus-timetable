@@ -41,9 +41,9 @@ export default class RoutesRenderer{
                arr += `${data.busStops[route.path[j]].x},${data.busStops[route.path[j]].y}`;
                if(j < route.path.length - 1){
                    arr += ' ';
-               }
-               
+               }               
            }
+           
            draw.polyline(arr)
                .fill('none')
                .stroke({ color: route.color, width: 4, linecap: 'round', linejoin: 'round' })

@@ -13,7 +13,15 @@ namespace BusTimetable.Grains
 
         public Task UpdateLocation(int x, int y)
         {
+            //RegisterTimer()
+            var busStop = GrainFactory.GetGrain<IBusStop>("");
             throw new NotImplementedException();
+        }
+
+        public override Task OnActivateAsync()
+        {
+            //todo load route details
+            return base.OnActivateAsync();
         }
     }
 }
