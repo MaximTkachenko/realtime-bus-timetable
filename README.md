@@ -21,3 +21,6 @@ ToDo:
 - persistence
 - clustering
 - dockerize, put into AKS
+
+
+For BusTimetable.Generator: https://stackoverflow.com/questions/11178414/algorithm-to-generate-equally-distributed-points-in-a-polygon
