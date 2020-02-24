@@ -12,12 +12,13 @@ namespace BusTimetable.Grains
 
         public Task UpdateBusArrival(string busId, int minutesBeforeArrival)
         {
-            throw new NotImplementedException();
+            //RegisterTimer()
+            return Task.CompletedTask;
         }
 
         public Task<string[]> GetTimeTable()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(Array.Empty<string>());
         }
     }
 }
