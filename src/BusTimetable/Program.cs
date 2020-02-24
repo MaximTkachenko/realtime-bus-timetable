@@ -47,10 +47,6 @@ namespace BusTimetable
                         {
                             opts.AdvertisedIPAddress = IPAddress.Loopback;
                         })
-                        .ConfigureApplicationParts(parts =>
-                        {
-                            //parts.AddApplicationPart(Assembly.GetExecutingAssembly()).WithReferences();
-                        })
                         .ConfigureLogging(logging =>
                         {
                             logging.AddSerilog();
