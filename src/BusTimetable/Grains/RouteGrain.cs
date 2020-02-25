@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
+using BusTimetable.Models;
 using BusTimetable.Services;
 using Microsoft.Extensions.Logging;
 using Models;
@@ -12,8 +13,11 @@ namespace BusTimetable.Grains
     {
         private readonly ILogger _logger;
         private readonly IMetadataService _metadata;
+
+        private string _routeId;
         private Route _route;
         private BusStop[] _busStops;
+        private Location _currentLocation;
 
         public RouteGrain(ILogger<RouteGrain> logger,
             IMetadataService metadata)
@@ -22,24 +26,47 @@ namespace BusTimetable.Grains
             _metadata = metadata;
         }
 
-        //needs bus route
-        //bus stops tracking
-        //time calculation
-
-        public Task UpdateLocation(float x, float y)
+        public Task UpdateLocation(Location location)
         {
-            _logger.LogInformation("{id} has new x={x}, y={y}", this.GetPrimaryKeyString(), x, y);
-            //var busStop = GrainFactory.GetGrain<IBusStop>("");
+            //todo probably I can keep a last N locations
+            _currentLocation = location;
+
+            var nextBusStop = GetNextBusStop();
+            _logger.LogInformation("{routeId}: x={x}, y={y}, next busStop={busStop}", _routeId, 
+                _currentLocation.X, _currentLocation.Y, nextBusStop.Id);
+
+            var busStop = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
+            busStop.UpdateRouteArrival(_routeId, -1);
+            
             return Task.CompletedTask;
         }
 
         public override Task OnActivateAsync()
         {
-            var id = this.GetPrimaryKeyString();
+            _routeId = this.GetPrimaryKeyString();
+
             var metadata = _metadata.GetMetadata();
-            _route = metadata.Routes.First(x => x.Id == id);
-            _busStops = metadata.BusStops;
+            _route = metadata.Routes.First(x => x.Id == _routeId);
+            _busStops = new BusStop[_route.Path.Length];
+            for (int i = 0; i < _route.Path.Length; i++)
+            {
+                _busStops[i] = metadata.BusStops[_route.Path[i].BusStopIndex];
+            }
+            
             return base.OnActivateAsync();
+        }
+
+        private BusStop GetNextBusStop()
+        {
+            for (var i = 0; i < _busStops.Length - 1; i++)
+            {
+                if (_currentLocation.IsBetween(_busStops[i], _busStops[i + 1]))
+                {
+                    return _busStops[i + 1];
+                }
+            }
+
+            return BusStop.NoStop;
         }
     }
 }

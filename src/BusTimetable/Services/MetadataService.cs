@@ -7,16 +7,16 @@ namespace BusTimetable.Services
 {
     public class MetadataService : IMetadataService
     {
-        private static readonly Root Metadata; 
-        private const decimal Velocity = 0.1m; //pixels in milliseconds
+        private readonly Root _metadata; 
+        private const decimal Velocity = 0.08m; //pixels in milliseconds
 
-        static MetadataService()
+        public MetadataService()
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "metadata.json");
-            Metadata = JsonSerializer.Deserialize<Root>(File.ReadAllText(path));
+            _metadata = JsonSerializer.Deserialize<Root>(File.ReadAllText(path));
 
             //calculate durations
-            foreach (var route in Metadata.Routes)
+            foreach (var route in _metadata.Routes)
             {
                 for (int i = 0; i < route.Path.Length; i++)
                 {
@@ -26,12 +26,12 @@ namespace BusTimetable.Services
                         continue;
                     }
 
-                    var distance = Metadata.BusStops[route.Path[i].BusStopIndex].GetDistance(Metadata.BusStops[route.Path[i - 1].BusStopIndex]);
+                    var distance = _metadata.BusStops[route.Path[i].BusStopIndex].GetDistance(_metadata.BusStops[route.Path[i - 1].BusStopIndex]);
                     route.Path[i].Duration = (int)(distance / Velocity);
                 }
             }
         }
 
-        public Root GetMetadata() => Metadata;
+        public Root GetMetadata() => _metadata;
     }
 }

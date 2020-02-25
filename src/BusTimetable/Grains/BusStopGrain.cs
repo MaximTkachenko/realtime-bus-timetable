@@ -10,10 +10,17 @@ namespace BusTimetable.Grains
         //should contain timetable
         //updates bus arrival according to messages from bus grain
 
-        public Task UpdateBusArrival(string busId, int minutesBeforeArrival)
+        public Task UpdateRouteArrival(string routeId, int msBeforeArrival)
         {
             //RegisterTimer()
             return Task.CompletedTask;
+        }
+
+        public override Task OnActivateAsync()
+        {
+            //todo load data regarding stop
+
+            return base.OnActivateAsync();
         }
 
         public Task<string[]> GetTimeTable()

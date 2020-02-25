@@ -5,7 +5,7 @@ namespace BusTimetable.Interfaces
 {
     public interface IBusStop : IGrainWithStringKey
     {
-        Task UpdateBusArrival(string busId, int minutesBeforeArrival);
+        Task UpdateRouteArrival(string routeId, int msBeforeArrival);
         Task<string[]> GetTimeTable();
     }
 }

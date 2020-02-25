@@ -30,9 +30,9 @@ namespace BusTimetable.Controllers
         public async Task<IActionResult> UpdateLocation(string routeId, [FromBody]Location location)
         {
             var routeGrain = _clusterClient.GetGrain<IRoute>(routeId);
-            await routeGrain.UpdateLocation(location.X, location.Y);
+            await routeGrain.UpdateLocation(location);
 
-            return Ok();
+            return Accepted();
         }
     }
 }
