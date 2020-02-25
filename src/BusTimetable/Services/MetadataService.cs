@@ -8,7 +8,6 @@ namespace BusTimetable.Services
     public class MetadataService : IMetadataService
     {
         private readonly Root _metadata; 
-        private const decimal Velocity = 0.08m; //pixels in milliseconds
 
         public MetadataService()
         {
@@ -27,7 +26,7 @@ namespace BusTimetable.Services
                     }
 
                     var distance = _metadata.BusStops[route.Path[i].BusStopIndex].GetDistance(_metadata.BusStops[route.Path[i - 1].BusStopIndex]);
-                    route.Path[i].Duration = (int)(distance / Velocity);
+                    route.Path[i].Duration = (int)(distance / route.Velocity);
                 }
             }
         }

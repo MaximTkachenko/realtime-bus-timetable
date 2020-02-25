@@ -109,6 +109,7 @@
     {
       "id": "method-first-0",
       "color": "#660B2F",
+      "velocity": 0.08, 
       "path": [
         {
           "busStopIndex": 0,

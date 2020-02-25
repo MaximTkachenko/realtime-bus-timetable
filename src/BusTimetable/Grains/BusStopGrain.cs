@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
+using BusTimetable.Models;
 using Orleans;
 
 namespace BusTimetable.Grains
@@ -23,9 +24,9 @@ namespace BusTimetable.Grains
             return base.OnActivateAsync();
         }
 
-        public Task<string[]> GetTimeTable()
+        public Task<TimeTableItem[]> GetTimeTable()
         {
-            return Task.FromResult(Array.Empty<string>());
+            return Task.FromResult(Array.Empty<TimeTableItem>());
         }
     }
 }

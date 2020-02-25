@@ -16,7 +16,6 @@ Tasks:
 - talk for STVG developer group
 
 ToDo:
-- need route generator (100 routes)
 - basic logic
 - persistence
 - clustering

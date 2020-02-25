@@ -34,5 +34,14 @@ namespace BusTimetable.Controllers
 
             return Accepted();
         }
+
+        [HttpPost("{busStopId}/timetable")]
+        public async Task<IActionResult> GetTimeTable(string busStopId)
+        {
+            var busStopGrain = _clusterClient.GetGrain<IBusStop>(busStopId);
+            var timetable = await busStopGrain.GetTimeTable();
+
+            return Ok(timetable);
+        }
     }
 }

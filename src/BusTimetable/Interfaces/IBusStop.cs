@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BusTimetable.Models;
 using Orleans;
 
 namespace BusTimetable.Interfaces
@@ -6,6 +7,6 @@ namespace BusTimetable.Interfaces
     public interface IBusStop : IGrainWithStringKey
     {
         Task UpdateRouteArrival(string routeId, int msBeforeArrival);
-        Task<string[]> GetTimeTable();
+        Task<TimeTableItem[]> GetTimeTable();
     }
 }
