@@ -15,7 +15,12 @@ namespace Models
             return GetDistance(anotherBusStop.X, anotherBusStop.Y);
         }
 
-        public int GetDistance(float x, float y)
+        public int GetDistance(Location location)
+        {
+            return GetDistance(location.X, location.Y);
+        }
+
+        private int GetDistance(float x, float y)
         {
             return (int)Math.Sqrt(Math.Pow(X - x, 2) + Math.Pow(Y - y, 2));
         }

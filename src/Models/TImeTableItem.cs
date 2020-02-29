@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace BusTimetable.Models
+namespace Models
 {
     public class TimeTableItem
     {

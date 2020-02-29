@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
-using BusTimetable.Models;
 using Microsoft.Extensions.Logging;
+using Models;
 using Orleans;
 
 namespace BusTimetable.Grains

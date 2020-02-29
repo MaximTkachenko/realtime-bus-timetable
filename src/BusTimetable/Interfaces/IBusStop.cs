@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BusTimetable.Models;
+using Models;
 using Orleans;
 
 namespace BusTimetable.Interfaces

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
-using BusTimetable.Models;
 using BusTimetable.Services;
 using Models;
 using Orleans;
@@ -28,7 +27,7 @@ namespace BusTimetable.Grains
             _currentLocation = location;
 
             var nextBusStop = GetNextBusStop();
-            var distance = nextBusStop.GetDistance(_currentLocation.X, _currentLocation.Y);
+            var distance = nextBusStop.GetDistance(_currentLocation);
             var duration = distance / _route.Velocity;
 
             var busStop = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);

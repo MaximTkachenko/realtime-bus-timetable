@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using BusTimetable.Interfaces;
-using BusTimetable.Models;
 using BusTimetable.Services;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using Orleans;
 
 namespace BusTimetable.Controllers
@@ -35,7 +35,7 @@ namespace BusTimetable.Controllers
             return Accepted();
         }
 
-        [HttpPost("{busStopId}/timetable")]
+        [HttpGet("{busStopId}/timetable")]
         public async Task<IActionResult> GetTimeTable(string busStopId)
         {
             var busStopGrain = _clusterClient.GetGrain<IBusStop>(busStopId);

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
-using Models;
 
-namespace BusTimetable.Models
+namespace Models
 {
     public class Location
     {
