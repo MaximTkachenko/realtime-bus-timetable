@@ -6,42 +6,50 @@ namespace BusTimetable.Models
 {
     public class Location
     {
+        private const double SelectionFuzziness = 3; 
+        private const double Tolerance = 0.1f;
+
         [JsonPropertyName("x")] public float X { get; set; }
         [JsonPropertyName("y")] public float Y { get; set; }
 
-        private const float fuziness = 0.3F;
-        //https://stackoverflow.com/questions/907390/how-can-i-tell-if-a-point-belongs-to-a-certain-line
+        /// <summary>
+        /// Based on https://stackoverflow.com/questions/907390/how-can-i-tell-if-a-point-belongs-to-a-certain-line
+        /// </summary>
         public bool IsBetween(BusStop stop1, BusStop stop2)
         {
-            //todo check in square limited by points
-            
-            if (Math.Abs(X - stop1.X) < fuziness && Math.Abs(Y - stop1.Y) < fuziness)
+            // If point is out of bounds, no need to do further checks
+            if (X + SelectionFuzziness < Math.Min(stop1.X, stop2.X) 
+                || Math.Max(stop1.X, stop2.X) < X - SelectionFuzziness)
+            {
+                return false;
+            }
+
+            if (Y + SelectionFuzziness < Math.Min(stop1.Y, stop2.Y) 
+                || Math.Max(stop1.Y, stop2.Y) < Y - SelectionFuzziness)
+            {
+                return false;
+            }
+
+            double deltaX = stop1.X - stop2.X;
+            double deltaY = stop1.Y - stop2.Y;
+
+            // If the line is straight, the earlier boundary check is enough to determine that the point is on the line.
+            // Also prevents division by zero exceptions.
+            if (Math.Abs(deltaX) < Tolerance || Math.Abs(deltaY) < Tolerance)
             {
                 return true;
             }
 
-            if (Math.Abs(X - stop2.X) < fuziness && Math.Abs(Y - stop2.Y) < fuziness)
-            {
-                return true;
-            }
+            var leftStop = stop1.X < stop2.X ? stop1 : stop2;
 
-            var deltaX = Math.Abs(stop1.X - stop2.X);
-            var deltaY = Math.Abs(stop1.Y - stop2.Y);
+            double slope = deltaY / deltaX;
+            double offset = leftStop.Y - leftStop.X * slope;
+            double calculatedY = X * slope + offset;
 
-            if (Math.Abs(deltaY) < fuziness)
-            {
-                return Math.Abs(Y - stop1.Y) < fuziness && X <= Math.Max(stop1.X, stop2.X) && X >= Math.Min(stop1.X, stop1.X);
-            }
+            // Check calculated Y matches the points Y coord with some easing.
+            bool lineContains = Y - SelectionFuzziness <= calculatedY && calculatedY <= Y + SelectionFuzziness;
 
-            if (Math.Abs(deltaX) < fuziness)
-            {
-                return Math.Abs(X - stop1.X) < fuziness && Y <= Math.Max(stop1.Y, stop2.Y) && Y >= Math.Min(stop1.Y, stop2.Y);
-            }
-
-            var main = deltaX / deltaY;
-            var nomain = (X - Math.Min(stop1.X, stop2.X)) / (Y - Math.Min(stop1.Y, stop2.Y));
-
-            return Math.Abs(main - nomain) < fuziness;
+            return lineContains;
         }
     }
 }

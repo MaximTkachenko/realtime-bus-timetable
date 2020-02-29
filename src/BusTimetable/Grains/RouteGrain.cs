@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using BusTimetable.Models;
 using BusTimetable.Services;
-using Microsoft.Extensions.Logging;
 using Models;
 using Orleans;
 
@@ -11,7 +10,6 @@ namespace BusTimetable.Grains
 {
     public class RouteGrain : Grain, IRoute
     {
-        private readonly ILogger _logger;
         private readonly IMetadataService _metadata;
 
         private string _routeId;
@@ -19,26 +17,24 @@ namespace BusTimetable.Grains
         private BusStop[] _busStops;
         private Location _currentLocation;
 
-        public RouteGrain(ILogger<RouteGrain> logger,
-            IMetadataService metadata)
+        public RouteGrain(IMetadataService metadata)
         {
-            _logger = logger;
             _metadata = metadata;
         }
 
-        public Task UpdateLocation(Location location)
+        public async Task UpdateLocation(Location location)
         {
             //todo probably I can keep a last N locations
             _currentLocation = location;
 
             var nextBusStop = GetNextBusStop();
-            _logger.LogInformation("{routeId}: x={x}, y={y}, next busStop={busStop}", _routeId, 
-                _currentLocation.X, _currentLocation.Y, nextBusStop.Id);
+            var distance = nextBusStop.GetDistance(_currentLocation.X, _currentLocation.Y);
+            var duration = distance / _route.Velocity;
 
             var busStop = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
-            busStop.UpdateRouteArrival(_routeId, -1);
-            
-            return Task.CompletedTask;
+
+            await busStop.UpdateRouteArrival(_routeId, duration);
+            //todo notify rest bus stops
         }
 
         public override Task OnActivateAsync()

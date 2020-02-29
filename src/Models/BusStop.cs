@@ -12,7 +12,12 @@ namespace Models
 
         public int GetDistance(BusStop anotherBusStop)
         {
-            return (int)Math.Sqrt(Math.Pow(X - anotherBusStop.X, 2) + Math.Pow(Y - anotherBusStop.Y, 2));
+            return GetDistance(anotherBusStop.X, anotherBusStop.Y);
+        }
+
+        public int GetDistance(float x, float y)
+        {
+            return (int)Math.Sqrt(Math.Pow(X - x, 2) + Math.Pow(Y - y, 2));
         }
 
         public static BusStop NoStop => new BusStop{Id = "NO_BUS_STOP"};

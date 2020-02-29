@@ -8,8 +8,8 @@ namespace BusTimetable.Tests.BusTimetableTests.Models
     public class LocationTests
     {
         [Theory]
-        [InlineData(2.5f, 2.5f, false)]
-        //[InlineData(7.5f, 7.5f, true)]
+        [InlineData(1f, 1f, false)]
+        [InlineData(7.5f, 7.5f, true)]
         public void IsBetween_LocationOnLineBetweenStops_ReturnsTrue(float x, float y, bool result)
         {
             var stop1 = new BusStop {X = 5, Y = 5};
