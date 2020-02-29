@@ -20,7 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusTimetable.Tests", "tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusTimetable.Generator", "tools\BusTimetable.Generator\BusTimetable.Generator.csproj", "{6D262B63-AA2A-487E-9BC6-7FD0A5E0F865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "src\Models\Models.csproj", "{136F699E-F498-4345-A954-465A2A17DAEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "src\Models\Models.csproj", "{136F699E-F498-4345-A954-465A2A17DAEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTimetable.Benchmarks", "tests\BusTimetable.Benchmarks\BusTimetable.Benchmarks.csproj", "{FD5A26BB-72F3-4446-BD78-5EE2DF572310}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{136F699E-F498-4345-A954-465A2A17DAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{136F699E-F498-4345-A954-465A2A17DAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{136F699E-F498-4345-A954-465A2A17DAEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5A26BB-72F3-4446-BD78-5EE2DF572310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5A26BB-72F3-4446-BD78-5EE2DF572310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5A26BB-72F3-4446-BD78-5EE2DF572310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5A26BB-72F3-4446-BD78-5EE2DF572310}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8} = {1AFA2D6D-2036-4DC0-B79D-95BCF66F6F77}
 		{6D262B63-AA2A-487E-9BC6-7FD0A5E0F865} = {6AB30DC7-B69F-4FBC-98C2-0DE5A4135655}
 		{136F699E-F498-4345-A954-465A2A17DAEF} = {C6309F1E-9976-4747-80A0-CBC64845AB78}
+		{FD5A26BB-72F3-4446-BD78-5EE2DF572310} = {1AFA2D6D-2036-4DC0-B79D-95BCF66F6F77}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF7180DE-3381-42E9-B410-E3D0CF8CFC5B}

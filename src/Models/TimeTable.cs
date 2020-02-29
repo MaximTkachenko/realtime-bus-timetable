@@ -2,15 +2,15 @@
 
 namespace Models
 {
-    public class TimeTable<TKey, TValue>
+    public class SmartTimeTable
     {
         //todo use dictionary and linked list for fast updates
-        public void Update(TKey key, TValue value)
+        public void Update(string routeId, int msBeforeArrival)
         {
 
         }
 
-        public (TKey key, TValue value)[] ToArray()
+        public (string RouteId, int MsBeforeArrival)[] ToArray()
         {
             throw new NotImplementedException();
         }

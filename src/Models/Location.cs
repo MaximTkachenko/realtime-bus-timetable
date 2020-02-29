@@ -41,11 +41,13 @@ namespace Models
 
             var leftStop = stop1.X < stop2.X ? stop1 : stop2;
 
+            // Calculate equation for line: y = x * slope + offset
+            // And then calculate Y for point's X
             double slope = deltaY / deltaX;
             double offset = leftStop.Y - leftStop.X * slope;
             double calculatedY = X * slope + offset;
 
-            // Check calculated Y matches the points Y coord with some easing.
+            // Check calculated Y matches the point's Y with some easing.
             bool lineContains = Y - SelectionFuzziness <= calculatedY && calculatedY <= Y + SelectionFuzziness;
 
             return lineContains;
