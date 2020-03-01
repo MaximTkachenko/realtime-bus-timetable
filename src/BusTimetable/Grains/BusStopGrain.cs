@@ -23,8 +23,8 @@ namespace BusTimetable.Grains
         public Task UpdateRouteArrival(string routeId, float msBeforeArrival)
         {
             //RegisterTimer()
-            _logger.LogInformation("{stopId}: {routeId} will arrive after {duration} ms",
-                _stopId, routeId, msBeforeArrival);
+            _logger.LogInformation("{stopId}: {duration} ms before {routeId}",
+                _stopId, msBeforeArrival, routeId);
             return Task.CompletedTask;
         }
 

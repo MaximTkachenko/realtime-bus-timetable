@@ -23,6 +23,11 @@ namespace BusTimetable.Grains
 
         public async Task UpdateLocation(Location location)
         {
+            if (_currentLocation.Equals(location))
+            {
+                return;
+            }
+
             //todo probably I can keep a last N locations
             _currentLocation = location;
 
@@ -38,6 +43,7 @@ namespace BusTimetable.Grains
 
         public override Task OnActivateAsync()
         {
+            _currentLocation = Location.NoLocation;
             _routeId = this.GetPrimaryKeyString();
 
             var metadata = _metadata.GetMetadata();
