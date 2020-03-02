@@ -5,6 +5,9 @@ namespace Models.Timetable
 {
     public class SmartTimetable : ITimetable
     {
+        private Dictionary<string, TimeTableItem> _dictionary = new Dictionary<string, TimeTableItem>();
+        private LinkedList<TimeTableItem> _items = new LinkedList<TimeTableItem>();
+
         public void AddOrUpdate(string routeId, double msBeforeArrival)
         {
             throw new NotImplementedException();

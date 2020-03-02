@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using Models.Timetable;
 using Xunit;
 
@@ -6,11 +7,9 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
 {
     public class TimetableTests
     {
-        [Fact]
-        public void BasicTest()
+        [Theory, MemberData(nameof(Timetables))]
+        public void BasicTest(ITimetable timetable)
         {
-            var timetable = new NaiveTimetable();
-
             timetable.AddOrUpdate("a", 100);
             timetable.AddOrUpdate("b", 50);
 
@@ -30,6 +29,18 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
             items[0].MsBeforeArrival.Should().Be(20);
             items[1].RouteId.Should().Be("b");
             items[1].MsBeforeArrival.Should().Be(40);
+        }
+
+        public static IEnumerable<object[]> Timetables
+        {
+            get
+            {
+                return new []
+                {
+                    new object[] { new NaiveTimetable() },
+                    //new object[] { new SmartTimetable() }
+                };
+            }
         }
     }
 }
