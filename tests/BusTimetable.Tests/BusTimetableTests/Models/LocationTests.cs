@@ -20,7 +20,6 @@ namespace BusTimetable.Tests.BusTimetableTests.Models
             double stop2X, double stop2Y,
             double x, double y, bool result)
         {
-            //todo add more tests
             var stop1 = new BusStop {X = stop1X, Y = stop1Y};
             var stop2 = new BusStop { X = stop2X, Y = stop2Y };
             var location = new Location {X = x, Y = y};

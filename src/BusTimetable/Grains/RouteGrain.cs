@@ -38,7 +38,6 @@ namespace BusTimetable.Grains
                 return;
             }
 
-            //notify bus stops
             var nextBusStop = _busStops[nextBusStopIndex];
             var distance = nextBusStop.GetDistance(_currentLocation);
             var duration = distance / _route.Velocity;

@@ -55,9 +55,9 @@ namespace Models
             double calculatedY = X * slope + offset;
 
             // Check calculated Y matches the point's Y with some easing.
-            bool lineContains = Y - SelectionFuzziness <= calculatedY && calculatedY <= Y + SelectionFuzziness;
+            bool isBetween = Y - SelectionFuzziness <= calculatedY && calculatedY <= Y + SelectionFuzziness;
 
-            return lineContains;
+            return isBetween;
         }
     }
 }
