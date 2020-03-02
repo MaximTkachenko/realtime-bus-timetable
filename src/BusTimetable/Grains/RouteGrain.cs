@@ -31,14 +31,29 @@ namespace BusTimetable.Grains
             //todo probably I can keep a last N locations
             _currentLocation = location;
 
-            var nextBusStop = GetNextBusStop();
+            var nextBusStopIndex = GetNextBusStopIndex();
+            if (nextBusStopIndex < 0)
+            {
+                return;
+            }
+
+            //notify bus stops
+            var nextBusStop = _busStops[nextBusStopIndex];
             var distance = nextBusStop.GetDistance(_currentLocation);
             var duration = distance / _route.Velocity;
 
-            var busStop = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
-
-            await busStop.UpdateRouteArrival(_routeId, duration);
-            //todo notify rest bus stops
+            var tasks = new Task[_busStops.Length - nextBusStopIndex];
+            for (var i = nextBusStopIndex; i < _busStops.Length; i++)
+            {
+                if (i > nextBusStopIndex)
+                {
+                    duration += _route.Path[i].Duration;
+                }
+                nextBusStop = _busStops[i];
+                var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
+                tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, duration);
+            }
+            await Task.WhenAll(tasks);
         }
 
         public override Task OnActivateAsync()
@@ -57,17 +72,17 @@ namespace BusTimetable.Grains
             return base.OnActivateAsync();
         }
 
-        private BusStop GetNextBusStop()
+        private int GetNextBusStopIndex()
         {
             for (var i = 0; i < _busStops.Length - 1; i++)
             {
                 if (_currentLocation.IsBetween(_busStops[i], _busStops[i + 1]))
                 {
-                    return _busStops[i + 1];
+                    return i + 1;
                 }
             }
 
-            return BusStop.NoStop;
+            return -1;
         }
     }
 }

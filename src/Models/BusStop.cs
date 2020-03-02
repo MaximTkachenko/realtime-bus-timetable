@@ -5,8 +5,6 @@ namespace Models
 {
     public class BusStop
     {
-        public static BusStop NoStop => new BusStop { Id = "NO_BUS_STOP" };
-
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("color")] public string Color { get; set; }
         [JsonPropertyName("x")] public double X { get; set; }
