@@ -6,6 +6,7 @@ namespace Models
     {
         [JsonPropertyName("width")] public int Width { get; set; }
         [JsonPropertyName("height")] public int Height { get; set; }
+        [JsonPropertyName("timeSpentOnBusStop")] public double TimeSpentOnBusStop { get; set; }
         [JsonPropertyName("busStops")] public BusStop[] BusStops { get; set; }
         [JsonPropertyName("routes")] public Route[] Routes { get; set; }
     }

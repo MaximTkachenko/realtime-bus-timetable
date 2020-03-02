@@ -1,6 +1,7 @@
 export type Root = {    
     width: number,
     height: number,
+    timeSpentOnBusStop: number,
     routes: Route[],
     busStops: BusStop[]
 }

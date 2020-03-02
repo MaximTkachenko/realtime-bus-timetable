@@ -6,7 +6,6 @@ export default class RoutesRenderer{
     busStopOffset: number;
     busRadius: number;
     busOffset: number;
-    timeSpentOnBusStop: number;
     trackRouesIntervalMs: number;
 
     constructor(){
@@ -14,7 +13,6 @@ export default class RoutesRenderer{
         this.busStopOffset = this.busStopRadius / 2;
         this.busRadius = 20;
         this.busOffset = this.busRadius / 2;
-        this.timeSpentOnBusStop = 500;
         this.trackRouesIntervalMs = 300;
     }
 
@@ -77,7 +75,7 @@ export default class RoutesRenderer{
 
             for(let j = 1; j < route.path.length; j++) {
                 const nextStop = data.busStops[route.path[j].busStopIndex];
-                const animateConfig = { ease: '--', duration: route.path[j].duration, delay: this.timeSpentOnBusStop };
+                const animateConfig = { ease: '--', duration: route.path[j].duration, delay: data.timeSpentOnBusStop };
                 routeCircle.animate(animateConfig).move(nextStop.x - this.busOffset, nextStop.y - this.busOffset);
             }
         }

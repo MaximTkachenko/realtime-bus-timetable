@@ -15,6 +15,7 @@ namespace BusTimetable.Grains
         private Route _route;
         private BusStop[] _busStops;
         private Location _currentLocation;
+        private double _timeSpentOnBusStop;
 
         public RouteGrain(IMetadataService metadata)
         {
@@ -47,7 +48,7 @@ namespace BusTimetable.Grains
             {
                 if (i > nextBusStopIndex)
                 {
-                    duration += _route.Path[i].Duration;
+                    duration += _timeSpentOnBusStop + _route.Path[i].Duration;
                 }
                 nextBusStop = _busStops[i];
                 var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
@@ -62,6 +63,7 @@ namespace BusTimetable.Grains
             _routeId = this.GetPrimaryKeyString();
 
             var metadata = _metadata.GetMetadata();
+            _timeSpentOnBusStop = metadata.TimeSpentOnBusStop;
             _route = metadata.Routes.First(x => x.Id == _routeId);
             _busStops = new BusStop[_route.Path.Length];
             for (int i = 0; i < _route.Path.Length; i++)
