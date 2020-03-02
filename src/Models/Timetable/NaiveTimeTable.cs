@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Models.Timetable
 {
-    public class NaiveTimeTable : ITimetable
+    public class NaiveTimetable : ITimetable
     {
         private List<TimeTableItem> _items = new List<TimeTableItem>();
 

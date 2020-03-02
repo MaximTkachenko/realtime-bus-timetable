@@ -31,7 +31,7 @@ namespace BusTimetable.Grains
         public override Task OnActivateAsync()
         {
             _stopId = this.GetPrimaryKeyString();
-            _timetable = new NaiveTimeTable();
+            _timetable = new NaiveTimetable();
 
             return base.OnActivateAsync();
         }
