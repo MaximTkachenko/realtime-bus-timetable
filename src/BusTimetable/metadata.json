@@ -112,32 +112,25 @@
       "velocity": 0.08, 
       "path": [
         {
-          "busStopIndex": 0,
-          "duration": -1
+          "busStopIndex": 0
         },
         {
-          "busStopIndex": 1,
-          "duration": -1
+          "busStopIndex": 1
         },
         {
-          "busStopIndex": 2,
-          "duration": -1
+          "busStopIndex": 2
         },
         {
-          "busStopIndex": 3,
-          "duration": -1
+          "busStopIndex": 3
         },
         {
-          "busStopIndex": 4,
-          "duration": -1
+          "busStopIndex": 4
         },
         {
-          "busStopIndex": 5,
-          "duration": -1
+          "busStopIndex": 5
         },
         {
-          "busStopIndex": 6,
-          "duration": -1
+          "busStopIndex": 6
         }
       ]
     }
