@@ -7,11 +7,11 @@ namespace Models
     {
         public static Location NoLocation => new Location { X = -1, Y = -1 };
 
-        private const float SelectionFuzziness = 3; 
-        private const float Tolerance = 0.1f;
+        private const double SelectionFuzziness = 3; 
+        private const double Tolerance = 0.1f;
 
-        [JsonPropertyName("x")] public float X { get; set; }
-        [JsonPropertyName("y")] public float Y { get; set; }
+        [JsonPropertyName("x")] public double X { get; set; }
+        [JsonPropertyName("y")] public double Y { get; set; }
 
         public bool Equals(Location other)
         {
@@ -36,8 +36,8 @@ namespace Models
                 return false;
             }
 
-            float deltaX = stop1.X - stop2.X;
-            float deltaY = stop1.Y - stop2.Y;
+            double deltaX = stop1.X - stop2.X;
+            double deltaY = stop1.Y - stop2.Y;
 
             // If the line is straight, the earlier boundary check is enough to determine that the point is on the line.
             // Also prevents division by zero exceptions.
@@ -50,9 +50,9 @@ namespace Models
 
             // Calculate equation for the line: y = x * slope + offset
             // And then calculate Y for point's X
-            float slope = deltaY / deltaX;
-            float offset = leftStop.Y - leftStop.X * slope;
-            float calculatedY = X * slope + offset;
+            double slope = deltaY / deltaX;
+            double offset = leftStop.Y - leftStop.X * slope;
+            double calculatedY = X * slope + offset;
 
             // Check calculated Y matches the point's Y with some easing.
             bool lineContains = Y - SelectionFuzziness <= calculatedY && calculatedY <= Y + SelectionFuzziness;

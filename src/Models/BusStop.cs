@@ -9,13 +9,13 @@ namespace Models
 
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("color")] public string Color { get; set; }
-        [JsonPropertyName("x")] public float X { get; set; }
-        [JsonPropertyName("y")] public float Y { get; set; }
+        [JsonPropertyName("x")] public double X { get; set; }
+        [JsonPropertyName("y")] public double Y { get; set; }
 
-        public int GetDistance(BusStop anotherBusStop) => GetDistance(anotherBusStop.X, anotherBusStop.Y);
+        public double GetDistance(BusStop anotherBusStop) => GetDistance(anotherBusStop.X, anotherBusStop.Y);
 
-        public int GetDistance(Location location) => GetDistance(location.X, location.Y);
+        public double GetDistance(Location location) => GetDistance(location.X, location.Y);
 
-        private int GetDistance(float x, float y) => (int)Math.Sqrt(Math.Pow(X - x, 2) + Math.Pow(Y - y, 2));
+        private double GetDistance(double x, double y) => Math.Sqrt(Math.Pow(X - x, 2) + Math.Pow(Y - y, 2));
     }
 }

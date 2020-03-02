@@ -9,7 +9,7 @@ namespace BusTimetable.Tests.BusTimetableTests.Models
         [Theory]
         [InlineData(1f, 1f, false)]
         [InlineData(7.5f, 7.5f, true)]
-        public void IsBetween_LocationOnLineBetweenStops_ReturnsTrue(float x, float y, bool result)
+        public void IsBetween_LocationOnLineBetweenStops_ReturnsTrue(double x, double y, bool result)
         {
             //todo add more tests
             var stop1 = new BusStop {X = 5, Y = 5};

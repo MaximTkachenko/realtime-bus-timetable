@@ -1,10 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Models
+namespace Models.Timetable
 {
     public class TimeTableItem
     {
         [JsonPropertyName("routeId")] public string RouteId { get; set; }
-        [JsonPropertyName("msBeforeArrival")] public float MsBeforeArrival { get; set; }
+        [JsonPropertyName("msBeforeArrival")] public double MsBeforeArrival { get; set; }
     }
 }

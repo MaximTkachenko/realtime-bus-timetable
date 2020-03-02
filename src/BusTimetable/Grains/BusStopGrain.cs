@@ -1,8 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using Microsoft.Extensions.Logging;
-using Models;
+using Models.Timetable;
 using Orleans;
 
 namespace BusTimetable.Grains
@@ -11,33 +11,34 @@ namespace BusTimetable.Grains
     {
         private readonly ILogger _logger;
         private string _stopId;
-
-        //should contain timetable
-        //updates bus arrival according to messages from bus grain
+        private ITimetable _timetable;
 
         public BusStopGrain(ILogger<BusStopGrain> logger)
         {
             _logger = logger;
         }
 
-        public Task UpdateRouteArrival(string routeId, float msBeforeArrival)
+        public Task UpdateRouteArrival(string routeId, double msBeforeArrival)
         {
-            //RegisterTimer()
             _logger.LogInformation("{stopId}: {duration} ms before {routeId}",
                 _stopId, msBeforeArrival, routeId);
+
+            _timetable.AddOrUpdate(routeId, msBeforeArrival);
+
             return Task.CompletedTask;
         }
 
         public override Task OnActivateAsync()
         {
             _stopId = this.GetPrimaryKeyString();
+            _timetable = new NaiveTimeTable();
 
             return base.OnActivateAsync();
         }
 
-        public Task<TimeTableItem[]> GetTimeTable()
+        public Task<IReadOnlyList<TimeTableItem>> GetTimeTable()
         {
-            return Task.FromResult(Array.Empty<TimeTableItem>());
+            return Task.FromResult(_timetable.GetTimetable());
         }
     }
 }

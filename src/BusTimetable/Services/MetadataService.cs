@@ -26,7 +26,7 @@ namespace BusTimetable.Services
                     }
 
                     var distance = _metadata.BusStops[route.Path[i].BusStopIndex].GetDistance(_metadata.BusStops[route.Path[i - 1].BusStopIndex]);
-                    route.Path[i].Duration = (int)(distance / route.Velocity);
+                    route.Path[i].Duration = distance / route.Velocity;
                 }
             }
         }
