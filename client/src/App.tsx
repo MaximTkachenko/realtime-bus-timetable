@@ -57,8 +57,8 @@ class App extends Component<AppProps, AppState> {
     else{
       screen = (
         <div>
-          <RoutesScreen metadata={this.state.metadata} server={this.state.server} />;
-          <Timetable/>
+          <Timetable server={this.state.server} />
+          <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
         </div>);
     }
 
