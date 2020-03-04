@@ -4,6 +4,7 @@ import RoutesScreen from './RoutesScreen';
 import { Root } from './Metadata';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 import Timetable from './Timetable';
 
 type AppProps = {  };
@@ -56,10 +57,14 @@ class App extends Component<AppProps, AppState> {
     }
     else{
       screen = (
-        <div>
-          <Timetable server={this.state.server} />
-          <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
-        </div>);
+        <Grid container direction="row" justify="flex-start" alignItems="flex-start" spacing={1}>
+          <Grid item xs={9}>
+            <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
+          </Grid>
+          <Grid item xs={3}>
+            <Timetable server={this.state.server} />
+          </Grid>
+        </Grid>);
     }
 
     return screen;
