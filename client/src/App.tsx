@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
 import RoutesScreen from './RoutesScreen';
 import { Root } from './Metadata';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import Timetable from './Timetable';
 
 type AppProps = {  };
@@ -46,14 +47,16 @@ class App extends Component<AppProps, AppState> {
 
     if(!connected){
       screen = 
-      <div className="App">
-        <header className="App-header">
-        <div>
-            <TextField id="host" label="Host" onChange={this.updateHost} />
-            <Button variant="contained" color="primary" onClick={this.handleClick}>go</Button>
-        </div>
-        </header>
-      </div>;
+          <Container maxWidth="sm">
+            <Grid container spacing={0} direction="row" justify="center" alignItems="center" style={{ minHeight: '100vh' }}>
+              <Grid item xs style={{ textAlign: 'center' }}>
+                <FormControl>
+                  <TextField id="host" placeholder="Host" onChange={this.updateHost} />
+                  <Button variant="contained" color="primary" onClick={this.handleClick}>go</Button>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Container>;
     }
     else{
       screen = (
