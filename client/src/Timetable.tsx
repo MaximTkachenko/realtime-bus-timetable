@@ -22,11 +22,8 @@ class Timetable extends Component<TimetableProps, TimetableState> {
 
         const intervalId = setInterval(async () => {
             fetch(this.props.server + '/' + this.state.busStopId + '/timetable')
-            .then(response => response.json())
-            .then(response =>
-            this.setState({ 
-                items: response
-            }))
+                .then(response => response.json())
+                .then(response => this.setState({ items: response }))
             .catch(error => this.setState({ 
                 items: []
             }));

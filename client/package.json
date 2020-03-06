@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.9.3",
     "@microsoft/signalr": "^3.1.2",
     "@svgdotjs/svg.js": "^3.0.16",
     "@testing-library/jest-dom": "^4.2.4",
@@ -15,6 +14,7 @@
     "@types/react-dom": "^16.9.5",
     "npm": "^6.13.7",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0",
     "typescript": "^3.7.5"
