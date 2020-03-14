@@ -11,12 +11,13 @@ class App extends Component<AppProps, AppState> {
   constructor(props: AppProps){
     super(props);
     this.state = {connected: false, server: '', error: false, metadata: null};
-    this.handleClick = this.handleClick.bind(this);
+    this.connectToServer = this.connectToServer.bind(this);
     this.updateHost = this.updateHost.bind(this);
-    this.hostKeyPress = this.hostKeyPress.bind(this);
   }
 
-  handleClick(){
+  connectToServer(e: any){
+    e.preventDefault();
+    
     fetch(this.state.server + '/metadata')
     .then(response => response.json())
     .then(response =>
@@ -35,38 +36,10 @@ class App extends Component<AppProps, AppState> {
   updateHost(e: any){
     this.setState({server: e.target.value});
   }
-
-  hostKeyPress(e: any){
-    if(e.charCode === 13){
-      this.handleClick();
-    }
-  }
   
-  render(){    
-    const connected = this.state.connected;
-    let screen;
-
-    if(!connected){
-      const style = {
-        paddingTop: '10%'
-      };
-
-      screen = 
-        <rb.Container style={style}>
-          <rb.Row className="justify-content-md-center">      
-            <rb.Col md="auto">
-              <rb.InputGroup className="mb-3">
-                <rb.FormControl placeholder="Host" aria-label="Host" aria-describedby="basic-addon2" onKeyPress={this.hostKeyPress} onChange={this.updateHost}/>
-                <rb.InputGroup.Append>
-                  <rb.Button onClick={this.handleClick}>Go</rb.Button>
-                </rb.InputGroup.Append>
-              </rb.InputGroup>
-            </rb.Col>
-          </rb.Row>      
-        </rb.Container>;
-    }
-    else {
-      screen =         
+  render(){  
+    if(this.state.connected){
+      return (       
         <rb.Container fluid>
           <rb.Row>      
             <rb.Col md="auto">
@@ -76,10 +49,30 @@ class App extends Component<AppProps, AppState> {
               <Timetable server={this.state.server} />
             </rb.Col>            
           </rb.Row>      
-        </rb.Container>;
+        </rb.Container>
+      );
     }
+    
+    const style = {
+      paddingTop: '10%'
+    };
 
-    return screen;
+    return (
+      <rb.Container style={style}>
+        <rb.Row className="justify-content-md-center">      
+          <rb.Col md="auto">
+            <form onSubmit={this.connectToServer}>
+              <rb.InputGroup className="mb-3">
+                <rb.FormControl placeholder="Host" aria-label="Host" aria-describedby="basic-addon2" onChange={this.updateHost}/>
+                <rb.InputGroup.Append>
+                  <rb.Button type="submit">Go</rb.Button>
+                </rb.InputGroup.Append>
+              </rb.InputGroup>
+            </form>
+          </rb.Col>
+        </rb.Row>      
+      </rb.Container>
+    );
   }
 }
 
