@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using BusTimetable.Services;
@@ -51,7 +52,7 @@ namespace BusTimetable.Grains
                 }
                 nextBusStop = _busStops[i];
                 var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
-                tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, duration);
+                tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Round(duration / 1000, 2));
             }
             await Task.WhenAll(tasks);
         }

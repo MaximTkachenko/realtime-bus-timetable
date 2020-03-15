@@ -15,15 +15,15 @@ class Timetable extends Component<TimetableProps, TimetableState> {
     }
   
     selectBusStop(busStopId: string) {
-        this.setState({busStopId: busStopId});
+        this.setState({ items: [], busStopId: '' })
         if(this.state.intervalId != null){
             clearInterval(this.state.intervalId);
         }
 
         const intervalId = setInterval(async () => {
-            fetch(this.props.server + '/' + this.state.busStopId + '/timetable')
+            fetch(this.props.server + '/' + busStopId + '/timetable')
                 .then(response => response.json())
-                .then(response => this.setState({ items: response }))
+                .then(response => this.setState({ items: response, busStopId: busStopId }))
             .catch(error => this.setState({ 
                 items: []
             }));
@@ -33,15 +33,15 @@ class Timetable extends Component<TimetableProps, TimetableState> {
     }
 
     render(){    
-        const listItems = this.state.items.map((item) =>
-            <li key={item.routeId}>{item.routeId}: {item.msBeforeArrival}</li> 
+        const listItems = this.state.items.map((item) =>            
+            <div key={item.routeId} className='alert alert-primary alert-link' role="alert">
+                {item.routeId}: {item.msBeforeArrival}
+            </div>
         );
         return (
         <div>
-            <b>{this.state.busStopId}</b>
-            <ul>
+            <h3>{this.state.busStopId}</h3>
             {listItems}
-            </ul>
         </div>
         );
     }
