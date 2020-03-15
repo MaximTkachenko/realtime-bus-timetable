@@ -26,11 +26,13 @@ class App extends Component<AppProps, AppState> {
         error: false,
         metadata: response
       }))
-    .catch(error => this.setState({ 
-      connected: false,
-      error: true,
-      metadata: null
-    }));
+    .catch(error => {
+      this.setState({ 
+        connected: false,
+        error: true,
+        metadata: null
+      })
+    });
   }
   
   updateHost(e: any){
@@ -48,11 +50,11 @@ class App extends Component<AppProps, AppState> {
             <rb.Col md="auto">
               <Timetable server={this.state.server} />
             </rb.Col>            
-          </rb.Row>      
+          </rb.Row>          
         </rb.Container>
       );
     }
-    
+
     const style = {
       paddingTop: '10%'
     };
@@ -70,7 +72,12 @@ class App extends Component<AppProps, AppState> {
               </rb.InputGroup>
             </form>
           </rb.Col>
-        </rb.Row>      
+        </rb.Row>  
+        <rb.Row className="justify-content-md-center">      
+          <rb.Col md="auto">
+            <rb.Alert variant="danger" hidden={!this.state.error}>Unable to connect to server.</rb.Alert>
+          </rb.Col>
+        </rb.Row>     
       </rb.Container>
     );
   }
