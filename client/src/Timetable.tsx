@@ -40,7 +40,7 @@ class Timetable extends Component<TimetableProps, TimetableState> {
         );
         return (
         <div>
-            <h3>{this.state.busStopId}</h3>
+            <h4>{this.state.busStopId}</h4>
             {listItems}
         </div>
         );

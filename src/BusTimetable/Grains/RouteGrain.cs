@@ -30,7 +30,7 @@ namespace BusTimetable.Grains
                 return;
             }
 
-            //todo probably I can keep a last N locations
+            //todo probably I can keep last N locations
             _currentLocation = location;
 
             var nextBusStopIndex = GetNextBusStopIndex();
