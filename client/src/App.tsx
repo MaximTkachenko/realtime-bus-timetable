@@ -40,7 +40,7 @@ class App extends Component<AppProps, AppState> {
   }
   
   render(){  
-    if(this.state.connected){
+    if(this.state.connected && this.state.metadata != null){
       return (       
         <rb.Container fluid>
           <rb.Row>      
@@ -48,7 +48,7 @@ class App extends Component<AppProps, AppState> {
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
             </rb.Col>            
             <rb.Col md="auto">
-              <Timetable server={this.state.server} />
+              <Timetable server={this.state.server} nowThresholdSec={this.state.metadata.nowThresholdSec} />
             </rb.Col>            
           </rb.Row>          
         </rb.Container>

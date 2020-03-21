@@ -6,16 +6,12 @@ export default class RoutesRenderer{
     busStopOffset: number;
     busRadius: number;
     busOffset: number;
-    trackRouesIntervalMs: number;
-    busStopColor: string;
 
     constructor(){
         this.busStopRadius = 36;
         this.busStopOffset = this.busStopRadius / 2;
         this.busRadius = 20;
         this.busOffset = this.busRadius / 2;
-        this.trackRouesIntervalMs = 300;
-        this.busStopColor = '#71B3DF';
     }
 
     init(){
@@ -28,7 +24,7 @@ export default class RoutesRenderer{
             this.renderRoutes(draw, data);
             this.renderBusStops(draw, data);
             const buses: SVG.Circle[] = this.startRoutes(draw, data);
-            this.trackRoutes(buses, server);
+            this.trackRoutes(buses, server, data.trackRouesIntervalMs);
         });
     }
 
@@ -54,7 +50,7 @@ export default class RoutesRenderer{
         for(let i = 0; i < data.busStops.length; i++) {
             const stop = data.busStops[i];
             draw.circle(this.busStopRadius).x(stop.x - this.busStopOffset).y(stop.y - this.busStopOffset)
-                .stroke({ color: 'black', width: 4}).fill(this.busStopColor)
+                .stroke({ color: 'black', width: 4}).fill(data.busStopColor)
                 .add(draw.element('title').words(stop.id))
                 .attr('id', stop.id)
                 .click((e: any) => {
@@ -84,7 +80,7 @@ export default class RoutesRenderer{
         return buses;
     }
 
-    trackRoutes(buses: SVG.Circle[], server: string){
+    trackRoutes(buses: SVG.Circle[], server: string, trackRouesIntervalMs: number){
         setInterval(async () => {
             const promises: Promise<Response>[] = [];
             for(let i = 0; i < buses.length; i++) {
@@ -101,6 +97,6 @@ export default class RoutesRenderer{
             }    
             
             await Promise.all(promises);
-        }, this.trackRouesIntervalMs);
+        }, trackRouesIntervalMs);
     }
 }

@@ -2,6 +2,9 @@ export type Root = {
     width: number,
     height: number,
     timeSpentOnBusStop: number,
+    busStopColor: string,
+    trackRouesIntervalMs: number,
+    nowThresholdSec: number,
     routes: Route[],
     busStops: BusStop[]
 }

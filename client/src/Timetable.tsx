@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-type TimetableProps = { server: string };
+type TimetableProps = { server: string, nowThresholdSec: number };
 type TimetableState = { busStopId: string, items: TimetableItem[], intervalId: NodeJS.Timeout | null, error: boolean };
 type TimetableItem = { routeId: string, msBeforeArrival: number };
 
@@ -42,7 +42,7 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
         
         const listItems = this.state.items.map((item) =>            
             <div key={item.routeId} className='alert alert-primary alert-link' role="alert">
-                {item.routeId}: {item.msBeforeArrival <= 1 ? 'now' : `${item.msBeforeArrival}sec`}
+                {item.routeId}: {item.msBeforeArrival <= this.props.nowThresholdSec ? 'now' : `${item.msBeforeArrival}sec`}
             </div>
         );
         return (
