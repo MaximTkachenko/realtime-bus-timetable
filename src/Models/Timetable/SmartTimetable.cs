@@ -13,6 +13,11 @@ namespace Models.Timetable
             throw new NotImplementedException();
         }
 
+        public void Remove(string routeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IReadOnlyList<TimeTableItem> GetTimetable()
         {
             throw new NotImplementedException();

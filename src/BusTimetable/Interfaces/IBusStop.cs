@@ -8,6 +8,7 @@ namespace BusTimetable.Interfaces
     public interface IBusStop : IGrainWithStringKey
     {
         Task UpdateRouteArrival(string routeId, double msBeforeArrival);
+        Task RemoveRouteArrival(string routeId);
         Task<IReadOnlyList<TimeTableItem>> GetTimeTable();
     }
 }

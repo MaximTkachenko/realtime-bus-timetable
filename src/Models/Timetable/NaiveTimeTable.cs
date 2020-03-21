@@ -14,6 +14,11 @@ namespace Models.Timetable
             _items = _items.OrderBy(x => x.MsBeforeArrival).ToList();
         }
 
+        public void Remove(string routeId)
+        {
+            _items.RemoveAll(x => x.RouteId == routeId);
+        }
+
         public IReadOnlyList<TimeTableItem> GetTimetable()
         {
             return _items;

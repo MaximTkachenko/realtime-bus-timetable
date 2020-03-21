@@ -8,7 +8,7 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
     public class TimetableTests
     {
         [Theory, MemberData(nameof(Timetables))]
-        public void BasicTest(ITimetable timetable)
+        public void AddOrUpdate_BasicTest(ITimetable timetable)
         {
             timetable.AddOrUpdate("a", 100);
             timetable.AddOrUpdate("b", 50);
@@ -29,6 +29,19 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
             items[0].MsBeforeArrival.Should().Be(20);
             items[1].RouteId.Should().Be("b");
             items[1].MsBeforeArrival.Should().Be(40);
+        }
+
+        [Theory, MemberData(nameof(Timetables))]
+        public void Remove_BasicTest(ITimetable timetable)
+        {
+            timetable.AddOrUpdate("a", 100);
+            timetable.AddOrUpdate("b", 50);
+            timetable.Remove("a");
+
+            var items = timetable.GetTimetable();
+            items.Count.Should().Be(1);
+            items[0].RouteId.Should().Be("b");
+            items[0].MsBeforeArrival.Should().Be(50);
         }
 
         public static IEnumerable<object[]> Timetables

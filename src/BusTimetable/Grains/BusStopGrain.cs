@@ -16,6 +16,12 @@ namespace BusTimetable.Grains
             return Task.CompletedTask;
         }
 
+        public Task RemoveRouteArrival(string routeId)
+        {
+            _timetable.Remove(routeId);
+            return Task.CompletedTask;
+        }
+
         public override Task OnActivateAsync()
         {
             _timetable = new NaiveTimetable();

@@ -16,6 +16,7 @@ namespace BusTimetable.Grains
         private Route _route;
         private BusStop[] _busStops;
         private Location _currentLocation;
+        private BusStop _nextBusStop;
         private double _timeSpentOnBusStop;
 
         public RouteGrain(IMetadataService metadata)
@@ -40,7 +41,14 @@ namespace BusTimetable.Grains
             }
 
             var nextBusStop = _busStops[nextBusStopIndex];
-            var distance = nextBusStop.GetDistance(_currentLocation);
+            if (!_nextBusStop.Equals(nextBusStop))
+            {
+                var nextBusStopGrainOld = GrainFactory.GetGrain<IBusStop>(_nextBusStop.Id);
+                await nextBusStopGrainOld.RemoveRouteArrival(_routeId);
+            }
+
+            _nextBusStop = nextBusStop;
+            var distance = _nextBusStop.GetDistance(_currentLocation);
             var duration = distance / _route.Velocity;
 
             var tasks = new Task[_busStops.Length - nextBusStopIndex];
@@ -50,8 +58,8 @@ namespace BusTimetable.Grains
                 {
                     duration += _timeSpentOnBusStop + _route.Path[i].Duration;
                 }
-                nextBusStop = _busStops[i];
-                var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
+                _nextBusStop = _busStops[i];
+                var busStopGrain = GrainFactory.GetGrain<IBusStop>(_nextBusStop.Id);
                 tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Truncate(duration / 1000));
             }
             await Task.WhenAll(tasks);
@@ -70,7 +78,9 @@ namespace BusTimetable.Grains
             {
                 _busStops[i] = metadata.BusStops[_route.Path[i].BusStopIndex];
             }
-            
+
+            _nextBusStop = _busStops[0];
+
             return base.OnActivateAsync();
         }
 
