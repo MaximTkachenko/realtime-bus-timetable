@@ -48,7 +48,7 @@ namespace BusTimetable.Grains
             }
 
             _nextBusStop = nextBusStop;
-            var distance = _nextBusStop.GetDistance(_currentLocation);
+            var distance = nextBusStop.GetDistance(_currentLocation);
             var duration = distance / _route.Velocity;
 
             var tasks = new Task[_busStops.Length - nextBusStopIndex];
@@ -58,8 +58,8 @@ namespace BusTimetable.Grains
                 {
                     duration += _timeSpentOnBusStop + _route.Path[i].Duration;
                 }
-                _nextBusStop = _busStops[i];
-                var busStopGrain = GrainFactory.GetGrain<IBusStop>(_nextBusStop.Id);
+                nextBusStop = _busStops[i];
+                var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
                 tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Truncate(duration / 1000));
             }
             await Task.WhenAll(tasks);
