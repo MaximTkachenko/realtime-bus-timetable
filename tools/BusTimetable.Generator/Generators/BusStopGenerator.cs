@@ -21,7 +21,7 @@ namespace BusTimetable.Generator.Generators
                 stops[i] = new BusStop
                 {
                     Id = IdGenerator.GetId(i),
-                    Color = ColorHexGenerator.GetColor(),
+                    //Color = ColorHexGenerator.GetColor(),
                     X = stop.X,
                     Y = stop.Y
                 };

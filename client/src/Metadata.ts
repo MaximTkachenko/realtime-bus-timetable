@@ -19,7 +19,6 @@ export type Point = {
 
 export type BusStop = {
     id: string,
-    color: string,
     x: number,
     y: number
 }

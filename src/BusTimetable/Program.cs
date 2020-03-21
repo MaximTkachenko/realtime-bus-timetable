@@ -1,9 +1,6 @@
 using System.Net;
-using System.Reflection;
-using BusTimetable.Grains;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Serilog;
@@ -31,7 +28,8 @@ namespace BusTimetable
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
+                    webBuilder
+                        .UseStartup<Startup>()
                         .UseSerilog();
                 })
                 .UseOrleans(siloBuilder =>

@@ -52,7 +52,7 @@ namespace BusTimetable.Grains
                 }
                 nextBusStop = _busStops[i];
                 var busStopGrain = GrainFactory.GetGrain<IBusStop>(nextBusStop.Id);
-                tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Round(duration / 1000, 2));
+                tasks[i - nextBusStopIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Truncate(duration / 1000));
             }
             await Task.WhenAll(tasks);
         }

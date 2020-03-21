@@ -32,7 +32,7 @@ namespace BusTimetable.Controllers
             var routeGrain = _clusterClient.GetGrain<IRoute>(routeId);
             await routeGrain.UpdateLocation(location);
 
-            return Accepted();
+            return Ok();
         }
 
         [HttpGet("{busStopId}/timetable")]

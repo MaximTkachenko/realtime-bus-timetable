@@ -7,6 +7,7 @@ export default class RoutesRenderer{
     busRadius: number;
     busOffset: number;
     trackRouesIntervalMs: number;
+    busStopColor: string;
 
     constructor(){
         this.busStopRadius = 36;
@@ -14,6 +15,7 @@ export default class RoutesRenderer{
         this.busRadius = 20;
         this.busOffset = this.busRadius / 2;
         this.trackRouesIntervalMs = 300;
+        this.busStopColor = '#71B3DF';
     }
 
     init(){
@@ -52,7 +54,7 @@ export default class RoutesRenderer{
         for(let i = 0; i < data.busStops.length; i++) {
             const stop = data.busStops[i];
             draw.circle(this.busStopRadius).x(stop.x - this.busStopOffset).y(stop.y - this.busStopOffset)
-                .stroke({ color: 'black', width: 4}).fill(stop.color)
+                .stroke({ color: 'black', width: 4}).fill(this.busStopColor)
                 .add(draw.element('title').words(stop.id))
                 .attr('id', stop.id)
                 .click((e: any) => {
