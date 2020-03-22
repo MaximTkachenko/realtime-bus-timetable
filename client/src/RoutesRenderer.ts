@@ -20,7 +20,7 @@ export default class RoutesRenderer{
         this.metadata = metadata;
         this.buses = [];
 
-        this.draw = SVG.SVG().addTo('#routes').size(this.metadata?.width, this.metadata?.height);
+        this.draw = SVG.SVG().addTo('#routes').size(this.metadata.width, this.metadata.height);
 
         this.renderRoutes();
         this.renderBusStops();

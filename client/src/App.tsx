@@ -55,11 +55,9 @@ export default class App extends Component<AppProps, AppState> {
         <rb.Container fluid>
           <rb.Row>      
             <rb.Col md="auto">
+              <rb.Button type="button" onClick={this.startOrReset}>{this.state.isFirstTime ? 'Start' : 'Reset'}</rb.Button>  
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
             </rb.Col>
-            <rb.Col md="auto">
-              <rb.Button type="button" onClick={this.startOrReset}>{this.state.isFirstTime ? 'Start' : 'Reset'}</rb.Button>  
-            </rb.Col>       
             <rb.Col md="auto">
               <Timetable server={this.state.server} nowThresholdSec={this.state.metadata.nowThresholdSec} />
             </rb.Col>            
