@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Root } from './Metadata';
+import RoutesRenderer from './RoutesRenderer';
 
-type RoutesScreenProps = { metadata: Root | null, server: string };
+type RoutesScreenProps = { metadata: Root, server: string };
 type RoutesScreenState = { };
 
 class RoutesScreen extends Component<RoutesScreenProps, RoutesScreenState> {
-    componentDidMount() {
-        let svgContainerReady = new CustomEvent('routesReady', {'detail': this.props});
-        document.dispatchEvent(svgContainerReady);
+    componentDidMount() {        
+        new RoutesRenderer(this.props.metadata, this.props.server);
     }
 
     render () {    

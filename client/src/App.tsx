@@ -5,14 +5,15 @@ import Timetable from './Timetable';
 import * as rb from 'react-bootstrap';
 
 type AppProps = {  };
-type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null };
+type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null, isFirstTime: boolean };
 
-class App extends Component<AppProps, AppState> {
+export default class App extends Component<AppProps, AppState> {
   constructor(props: AppProps){
     super(props);
-    this.state = {connected: false, server: '', error: false, metadata: null};
+    this.state = {connected: false, server: '', error: false, metadata: null, isFirstTime: true};
     this.connectToServer = this.connectToServer.bind(this);
     this.updateHost = this.updateHost.bind(this);
+    this.startOrReset = this.startOrReset.bind(this);
   }
 
   connectToServer(e: any){
@@ -38,6 +39,15 @@ class App extends Component<AppProps, AppState> {
   updateHost(e: any){
     this.setState({server: e.target.value});
   }
+
+  startOrReset(){
+    let rouetesStarted = new CustomEvent(this.state.isFirstTime ? 'routesStarted' : 'routesRestarted');
+    document.dispatchEvent(rouetesStarted);
+
+    if(this.state.isFirstTime){
+      this.setState({isFirstTime: false});
+    }
+  }
   
   render(){  
     if(this.state.connected && this.state.metadata != null){
@@ -46,7 +56,10 @@ class App extends Component<AppProps, AppState> {
           <rb.Row>      
             <rb.Col md="auto">
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
-            </rb.Col>            
+            </rb.Col>
+            <rb.Col md="auto">
+              <rb.Button type="button" onClick={this.startOrReset}>{this.state.isFirstTime ? 'Start' : 'Reset'}</rb.Button>  
+            </rb.Col>       
             <rb.Col md="auto">
               <Timetable server={this.state.server} nowThresholdSec={this.state.metadata.nowThresholdSec} />
             </rb.Col>            
@@ -82,5 +95,3 @@ class App extends Component<AppProps, AppState> {
     );
   }
 }
-
-export default App;

@@ -28,6 +28,9 @@ namespace BusTimetable.Grains
             return base.OnActivateAsync();
         }
 
+        //todo this method should be optimized using:
+        // - https://dotnet.github.io/orleans/Documentation/grains/stateless_worker_grains.html
+        // - https://github.com/dotnet/orleans/issues/5283#issuecomment-450977696- 
         public Task<IReadOnlyList<TimeTableItem>> GetTimeTable()
         {
             return Task.FromResult(_timetable.GetTimetable());

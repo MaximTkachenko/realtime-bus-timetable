@@ -33,10 +33,10 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
     render(){
         if(this.state.error){
             return (
-            <div>
-                <h4>{this.state.busStopId}</h4>
-                <div key='error' className='alert alert-danger alert-link' role="alert">Unable to connect to server.</div>
-            </div>
+                <div>
+                    <h4>{this.state.busStopId}</h4>
+                    <div key='error' className='alert alert-danger alert-link' role="alert">Unable to connect to server.</div>
+                </div>
             );
         }
         
@@ -46,10 +46,10 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
             </div>
         );
         return (
-        <div>
-            <h4>{this.state.busStopId}</h4>
-            {listItems}
-        </div>
+            <div>
+                <h4>{this.state.busStopId}</h4>
+                {listItems}
+            </div>
         );
     }
 }
