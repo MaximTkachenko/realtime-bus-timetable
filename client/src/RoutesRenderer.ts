@@ -110,6 +110,6 @@ export default class RoutesRenderer{
             }    
             
             await Promise.all(promises);
-        }, this.metadata.trackRouesIntervalMs);
+        }, this.metadata.trackRoutesIntervalMs);
     }
 }

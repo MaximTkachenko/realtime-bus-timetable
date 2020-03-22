@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using BusTimetable.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,12 @@ namespace BusTimetable.Controllers
         {
             _metadata = metadata;
             _clusterClient = clusterClient;
+        }
+
+        [HttpGet("")]
+        public IActionResult Index()
+        {
+            return Ok($"Hi, I'm {nameof(BusTimetable)} backend, server name {Environment.MachineName}, OS {Environment.OSVersion}");
         }
 
         [HttpGet("metadata")]
