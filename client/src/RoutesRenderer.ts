@@ -88,6 +88,7 @@ export default class RoutesRenderer{
                 const nextStop = this.metadata.busStops[route.path[j].busStopIndex];
                 const animateConfig = { ease: '--', duration: route.path[j].duration, delay: this.metadata.timeSpentOnBusStop };
                 bus.animate(animateConfig).move(nextStop.x - this.busOffset, nextStop.y - this.busOffset);
+                //todo stop location tracking in the end
             }
         }
     }

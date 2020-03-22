@@ -37,6 +37,7 @@ namespace BusTimetable.Grains
             var nextBusStopIndex = GetNextBusStopIndex();
             if (nextBusStopIndex < 0)
             {
+                //todo need to remove from the last bus stop
                 return;
             }
 
