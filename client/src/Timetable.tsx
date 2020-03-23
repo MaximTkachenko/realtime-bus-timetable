@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Root } from './Metadata';
 
-type TimetableProps = { server: string, nowThresholdSec: number };
+type TimetableProps = { server: string, metadata: Root };
 type TimetableState = { busStopId: string, items: TimetableItem[], intervalId: NodeJS.Timeout | null, error: boolean };
 type TimetableItem = { routeId: string, msBeforeArrival: number };
 
@@ -25,7 +26,7 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
                 .then(response => response.json())
                 .then(response => this.setState({ items: response, busStopId: busStopId, error: false }))
             .catch(error => this.setState({items: [], error: true}));
-        }, 500);
+        }, this.props.metadata.updateIntervalMs);
 
         this.setState({intervalId: intervalId});
     }
@@ -42,7 +43,7 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
         
         const listItems = this.state.items.map((item) =>            
             <div key={item.routeId} className='alert alert-primary alert-link' role="alert">
-                {item.routeId}: {item.msBeforeArrival <= this.props.nowThresholdSec ? 'now' : `${item.msBeforeArrival}sec`}
+                {item.routeId}: {item.msBeforeArrival <= this.props.metadata.nowThresholdSec ? 'now' : `${item.msBeforeArrival}sec`}
             </div>
         );
         return (

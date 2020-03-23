@@ -1,9 +1,10 @@
 {
   "width": 800,
   "height": 800,
-  "timeSpentOnBusStop": 500,
+  "timeSpentOnBusStopMs": 500,
   "busStopColor": "#71B3DF",
-  "trackRoutesIntervalMs": 300,
+  "trackRoutesIntervalMs": 500,
+  "updateIntervalMs": 500,
   "nowThresholdSec": 1,
   "busStops": [
     {

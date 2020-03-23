@@ -1,7 +1,8 @@
 export type Root = {    
     width: number,
     height: number,
-    timeSpentOnBusStop: number,
+    timeSpentOnBusStopMs: number,
+    updateIntervalMs: number,
     busStopColor: string,
     trackRoutesIntervalMs: number,
     nowThresholdSec: number,

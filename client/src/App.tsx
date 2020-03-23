@@ -59,7 +59,7 @@ export default class App extends Component<AppProps, AppState> {
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
             </rb.Col>
             <rb.Col md="auto">
-              <Timetable server={this.state.server} nowThresholdSec={this.state.metadata.nowThresholdSec} />
+              <Timetable server={this.state.server} metadata={this.state.metadata} />
             </rb.Col>            
           </rb.Row>          
         </rb.Container>

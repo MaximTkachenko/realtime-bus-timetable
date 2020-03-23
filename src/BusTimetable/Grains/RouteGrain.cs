@@ -72,7 +72,7 @@ namespace BusTimetable.Grains
             _routeId = this.GetPrimaryKeyString();
 
             var metadata = _metadata.GetMetadata();
-            _timeSpentOnBusStop = metadata.TimeSpentOnBusStop;
+            _timeSpentOnBusStop = metadata.TimeSpentOnBusStopMs;
             _route = metadata.Routes.First(x => x.Id == _routeId);
             _busStops = new BusStop[_route.Path.Length];
             for (int i = 0; i < _route.Path.Length; i++)
