@@ -1,6 +1,8 @@
 using System.Net;
+using BusTimetable.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Serilog;
@@ -30,11 +32,19 @@ namespace BusTimetable
                 {
                     webBuilder
                         .UseStartup<Startup>()
-                        .UseSerilog();
+                        .UseSerilog()
+                        .UseUrls("http://*:5005");
                 })
                 .UseOrleans(siloBuilder =>
                 {
                     siloBuilder
+                        .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(IBusStop).Assembly))
+                        .UseDashboard(options => {
+                            options.Host = "*";
+                            options.Port = 5006;
+                            options.HostSelf = true;
+                            options.CounterUpdateIntervalMs = 2000;
+                        })
                         .UseLocalhostClustering()
                         .Configure<ClusterOptions>(opts =>
                         {

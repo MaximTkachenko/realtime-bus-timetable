@@ -5,7 +5,7 @@ import RoutesRenderer from './RoutesRenderer';
 type RoutesScreenProps = { metadata: Root, server: string };
 type RoutesScreenState = { };
 
-class RoutesScreen extends Component<RoutesScreenProps, RoutesScreenState> {
+export default class RoutesScreen extends Component<RoutesScreenProps, RoutesScreenState> {
     componentDidMount() {        
         new RoutesRenderer(this.props.metadata, this.props.server);
     }
@@ -16,5 +16,3 @@ class RoutesScreen extends Component<RoutesScreenProps, RoutesScreenState> {
         );
     };
 }
-
-export default RoutesScreen;
