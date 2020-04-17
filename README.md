@@ -17,7 +17,7 @@ Tasks:
 
 ToDo:
 - [DONE] basic logic - [v1](https://github.com/MaximTkachenko/realtime-bus-timetable/releases/tag/v1)
-- smarttimetable + benhmarks
+- smarttimetable + benhmarks + remove route on arrival
 - clustering (sql server) + local docker + haproxy
 - loadtests + singleton service
 - aci + traffic manager + clustering (table storage) = https://aaronmsft.com/posts/azure-container-instances/
