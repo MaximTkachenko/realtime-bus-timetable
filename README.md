@@ -1,19 +1,28 @@
-# realtime-bus-timetable
+# realtime-bus-timetable [WORK IN PROGRESS]
 Real time bus timetable
 
+How to run it locally:
+- run orleans backend:
+```
+cd src\BusTimetable
+dotnet run
+```
+- backend listens on port 5005
+- run frontend:
+```
+cd \client
+npm start
+```
+- type `http://localhost:5005` in host input and click `GO`
+- click `Start` and then click on any circle on the map
+
 Stack:
-- frontend: typescript, react, [svg.js](https://svgjs.com)
+- frontend: typescript, [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
 - backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
-- signalr: pushing timetable from server instead of pulling from clients
 
 Useful links:
 - https://svgjs.com/docs/2.7/
 - https://dotnet.github.io/orleans/Documentation/index.html
-- https://dev.to/dirk94/how-i-structure-my-express-typescript-react-applications-g3e
-
-Tasks:
-- articles for blog
-- talk for STVG developer group
 
 ToDo:
 - [DONE] basic logic - [v1](https://github.com/MaximTkachenko/realtime-bus-timetable/releases/tag/v1)
