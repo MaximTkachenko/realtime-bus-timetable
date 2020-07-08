@@ -1,5 +1,4 @@
 # realtime-bus-timetable [WORK IN PROGRESS]
-Real time bus timetable
 
 How to run it locally:
 - run orleans backend:

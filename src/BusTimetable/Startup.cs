@@ -32,6 +32,7 @@ namespace BusTimetable
             });
 
             services.AddSingleton<IMetadataService, MetadataService>();
+            services.AddSingleton<ITimetableCache, TimetableCache>();
 
             services.AddControllers();
             services.AddSignalR();

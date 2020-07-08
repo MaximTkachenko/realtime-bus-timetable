@@ -9,6 +9,6 @@ namespace BusTimetable.Interfaces
     {
         Task UpdateRouteArrival(string routeId, double msBeforeArrival);
         Task RemoveRouteArrival(string routeId);
-        Task<IReadOnlyList<TimeTableItem>> GetTimeTable();
+        Task<IReadOnlyList<TimeTableItem>> GetTimetable();
     }
 }

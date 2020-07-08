@@ -12,12 +12,15 @@ namespace BusTimetable.Controllers
     public class TimetableController : ControllerBase
     {
         private readonly IMetadataService _metadata;
+        private readonly ITimetableCache _cache;
         private readonly IClusterClient _clusterClient;
 
         public TimetableController(IMetadataService metadata,
+            ITimetableCache cache,
             IClusterClient clusterClient)
         {
             _metadata = metadata;
+            _cache = cache;
             _clusterClient = clusterClient;
         }
 
@@ -43,12 +46,18 @@ namespace BusTimetable.Controllers
         }
 
         [HttpGet("{busStopId}/timetable")]
-        public async Task<IActionResult> GetTimeTable(string busStopId)
+        public async Task<IActionResult> GetTimetable(string busStopId)
         {
             var busStopGrain = _clusterClient.GetGrain<IBusStop>(busStopId);
-            var timetable = await busStopGrain.GetTimeTable();
+            var timetable = await busStopGrain.GetTimetable();
 
             return Ok(timetable);
+        }
+
+        [HttpGet("{busStopId}/cache/timetable")]
+        public IActionResult GetTimeTableFromCache(string busStopId)
+        {
+            return Ok(_cache.GetTimetable(busStopId));
         }
     }
 }
