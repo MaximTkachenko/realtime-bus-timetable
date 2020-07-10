@@ -25,6 +25,7 @@ Useful links:
 
 ToDo:
 - [DONE] basic logic - [v1](https://github.com/MaximTkachenko/realtime-bus-timetable/releases/tag/v1)
+- [orleans meetups](https://github.com/OrleansContrib/meetups)
 - smarttimetable + benhmarks + remove route on arrival
 - clustering (sql server) + local docker + haproxy
 - loadtests + singleton service
