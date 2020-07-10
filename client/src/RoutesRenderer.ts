@@ -24,16 +24,9 @@ export default class RoutesRenderer{
 
         this.renderRoutes();
         this.renderBusStops();
-        this.renderBuses();   
-
-        document.addEventListener("routesStarted", (e: any) => {
-            this.startRoutes();
-            this.trackRoutes();
-        });
-
-        document.addEventListener("routesRestarted", (e: any) => {
-            //todo cancel animation, reset all           
-        });
+        this.renderBuses();  
+        this.startRoutes();
+        this.trackRoutes();
     }
 
     private renderRoutes(){
@@ -59,8 +52,14 @@ export default class RoutesRenderer{
             const route = this.metadata.routes[i];
                
             const firstBusStop = this.metadata.busStops[route.path[0].busStopIndex];
-            const routeCircle = this.draw.circle(this.busRadius).x(firstBusStop.x - this.busOffset).y(firstBusStop.y - this.busOffset)
-                .fill(this.metadata.routes[i].color).stroke({ color: 'white', width: 2}).attr('id', route.id);
+            const routeCircle = this.draw.circle(this.busRadius)
+                .x(firstBusStop.x - this.busOffset)
+                .y(firstBusStop.y - this.busOffset)
+                .fill(this.metadata.routes[i].color)
+                .stroke({ color: 'white', width: 2})
+                .attr('id', route.id)
+                .attr('index', i)
+                .attr('direction', true);
             this.buses.push(routeCircle);
        } 
     }
@@ -81,14 +80,33 @@ export default class RoutesRenderer{
 
     private startRoutes() {            
         for(let i = 0; i < this.metadata.routes.length; i++) {
-            const route = this.metadata.routes[i];
-            const bus = this.buses[i];
+            this.startRoute(this.buses[i]);
+        }
+    }
 
+    private startRoute(bus: SVG.Circle){
+        const routeIndex = bus.attr('index');        
+        const direction = bus.attr('direction') === 'true';
+        bus.attr('direction', !direction);
+        const route = this.metadata.routes[routeIndex];
+
+        const routeBuilder = (i: number, isLast: boolean, direction: boolean) => {
+            const nextStop = this.metadata.busStops[route.path[i].busStopIndex];
+            const duration = direction ? route.path[i].duration : route.path[i + 1].duration;
+            const animateConfig = { ease: '--', duration: duration, delay: this.metadata.timeSpentOnBusStopMs };
+            const routeRunner = bus.animate(animateConfig).move(nextStop.x - this.busOffset, nextStop.y - this.busOffset);
+            if(isLast){
+                routeRunner.after((e: any) => {this.startRoute(e.detail._element);});
+            }
+        };
+        
+        if(direction){
             for(let j = 1; j < route.path.length; j++) {
-                const nextStop = this.metadata.busStops[route.path[j].busStopIndex];
-                const animateConfig = { ease: '--', duration: route.path[j].duration, delay: this.metadata.timeSpentOnBusStopMs };
-                bus.animate(animateConfig).move(nextStop.x - this.busOffset, nextStop.y - this.busOffset);
-                //todo stop location tracking in the end
+                routeBuilder(j, j === route.path.length - 1, direction);
+            }
+        } else{            
+            for(let j = route.path.length - 2; j > -1; j--) {
+                routeBuilder(j, j === 0, direction);
             }
         }
     }

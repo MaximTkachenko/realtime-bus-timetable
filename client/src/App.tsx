@@ -13,7 +13,6 @@ export default class App extends Component<AppProps, AppState> {
     this.state = {connected: false, server: '', error: false, metadata: null, isFirstTime: true};
     this.connectToServer = this.connectToServer.bind(this);
     this.updateHost = this.updateHost.bind(this);
-    this.startOrReset = this.startOrReset.bind(this);
   }
 
   connectToServer(e: any){
@@ -39,15 +38,6 @@ export default class App extends Component<AppProps, AppState> {
   updateHost(e: any){
     this.setState({server: e.target.value});
   }
-
-  startOrReset(){
-    let rouetesStarted = new CustomEvent(this.state.isFirstTime ? 'routesStarted' : 'routesRestarted');
-    document.dispatchEvent(rouetesStarted);
-
-    if(this.state.isFirstTime){
-      this.setState({isFirstTime: false});
-    }
-  }
   
   render(){  
     if(this.state.connected && this.state.metadata != null){
@@ -55,7 +45,6 @@ export default class App extends Component<AppProps, AppState> {
         <rb.Container fluid>
           <rb.Row>      
             <rb.Col md="auto">
-              <rb.Button type="button" id="start-btn" onClick={this.startOrReset}>{this.state.isFirstTime ? 'Start' : 'Reset'}</rb.Button>  
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
             </rb.Col>
             <rb.Col md="auto">
