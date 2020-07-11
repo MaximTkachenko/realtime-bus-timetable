@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: dotnet build src/BusTimetable/BusTimetable.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test tests/BusTimetable.Tests/BusTimetable.Tests --no-restore --verbosity normal
+      run: dotnet test tests/BusTimetable.Tests/BusTimetable.Tests.csproj --no-restore --verbosity normal
