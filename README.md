@@ -1,3 +1,5 @@
+![.NET Core](https://github.com/MaximTkachenko/realtime-bus-timetable/workflows/.NET%20Core/badge.svg)
+
 # realtime-bus-timetable [WORK IN PROGRESS]
 
 How to run it locally:
