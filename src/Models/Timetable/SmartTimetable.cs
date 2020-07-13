@@ -50,9 +50,10 @@ namespace Models.Timetable
             return _items.ToArray();
         }
 
-        private LinkedListNode<TimeTableItem> Find(double msBeforeArrival)
+        private LinkedListNode<TimeTableItem> Find(double msBeforeArrival, LinkedListNode<TimeTableItem> startNode = null, bool searchDown = true)
         {
-            for (var node = _items.First; node != null; node = node.Next)
+            startNode = startNode ?? _items.First;
+            for (var node = startNode; node != null; node = searchDown ? node.Next : node.Previous)
             {
                 if (node.Value.MsBeforeArrival >= msBeforeArrival)
                 {
