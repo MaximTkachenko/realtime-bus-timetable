@@ -51,7 +51,7 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
                 return new []
                 {
                     new object[] { new NaiveTimetable() },
-                    //new object[] { new SmartTimetable() }
+                    new object[] { new SmartTimetable() }
                 };
             }
         }
