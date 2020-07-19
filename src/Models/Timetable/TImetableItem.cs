@@ -6,5 +6,6 @@ namespace Models.Timetable
     {
         [JsonPropertyName("routeId")] public string RouteId { get; set; }
         [JsonPropertyName("msBeforeArrival")] public double MsBeforeArrival { get; set; }
+        [JsonPropertyName("direction")] public Direction Direction { get; set; }
     }
 }

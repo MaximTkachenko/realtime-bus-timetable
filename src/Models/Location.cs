@@ -7,11 +7,12 @@ namespace Models
     {
         public static Location NoLocation => new Location { X = -1, Y = -1 };
 
-        private const double SelectionFuzziness = 3; 
+        private const double SelectionFuzziness = 3;
         private const double Tolerance = 0.1f;
 
         [JsonPropertyName("x")] public double X { get; set; }
         [JsonPropertyName("y")] public double Y { get; set; }
+        [JsonPropertyName("unixTimestamp")] public double UnixTimestamp { get; set; }
 
         public bool Equals(Location other)
         {

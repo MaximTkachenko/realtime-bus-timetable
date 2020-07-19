@@ -121,7 +121,7 @@ export default class RoutesRenderer{
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({x: this.buses[i].node.cx.baseVal.value, y: this.buses[i].node.cy.baseVal.value})
+                    body: JSON.stringify({x: this.buses[i].node.cx.baseVal.value, y: this.buses[i].node.cy.baseVal.value, unixTimestamp: Date.now() / 1000})
                 });
 
                 promises.push(promise);

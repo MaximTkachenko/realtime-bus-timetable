@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
+using Models;
 using Models.Timetable;
 using Xunit;
 
@@ -10,8 +11,8 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
         [Theory, MemberData(nameof(Timetables))]
         public void AddOrUpdate_BasicTest(ITimetable timetable)
         {
-            timetable.AddOrUpdate("a", 100);
-            timetable.AddOrUpdate("b", 50);
+            timetable.AddOrUpdate("a", 100, Direction.There);
+            timetable.AddOrUpdate("b", 50, Direction.There);
 
             var items = timetable.GetTimetable();
             items.Count.Should().Be(2);
@@ -20,8 +21,8 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
             items[1].RouteId.Should().Be("a");
             items[1].MsBeforeArrival.Should().Be(100);
 
-            timetable.AddOrUpdate("a", 20);
-            timetable.AddOrUpdate("b", 40);
+            timetable.AddOrUpdate("a", 20, Direction.There);
+            timetable.AddOrUpdate("b", 40, Direction.There);
 
             items = timetable.GetTimetable();
             items.Count.Should().Be(2);
@@ -34,8 +35,8 @@ namespace BusTimetable.Tests.BusTimetableTests.Models.Timetable
         [Theory, MemberData(nameof(Timetables))]
         public void Remove_BasicTest(ITimetable timetable)
         {
-            timetable.AddOrUpdate("a", 100);
-            timetable.AddOrUpdate("b", 50);
+            timetable.AddOrUpdate("a", 100, Direction.There);
+            timetable.AddOrUpdate("b", 50, Direction.There);
             timetable.Remove("a");
 
             var items = timetable.GetTimetable();

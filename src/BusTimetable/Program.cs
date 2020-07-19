@@ -18,7 +18,7 @@ namespace BusTimetable
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                .MinimumLevel.Override("Orleans", LogEventLevel.Information)
+                .MinimumLevel.Override("Orleans", LogEventLevel.Fatal)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();

@@ -7,10 +7,10 @@ namespace Models.Timetable
     {
         private List<TimeTableItem> _items = new List<TimeTableItem>();
 
-        public void AddOrUpdate(string routeId, double msBeforeArrival)
+        public void AddOrUpdate(string routeId, double msBeforeArrival, Direction direction)
         {
             _items.RemoveAll(x => x.RouteId == routeId);
-            _items.Add(new TimeTableItem{RouteId = routeId, MsBeforeArrival = msBeforeArrival});
+            _items.Add(new TimeTableItem{RouteId = routeId, MsBeforeArrival = msBeforeArrival, Direction = direction});
             _items = _items.OrderBy(x => x.MsBeforeArrival).ToList();
         }
 

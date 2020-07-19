@@ -50,7 +50,7 @@ namespace BusTimetable.Services
                 }
 
                 await Task.WhenAll(tasks);
-                _cache = tasks.Select((i, k) => (BusStopId: _busStopIds[k], Timetable: i.Result))
+                _cache = tasks.Select((timetableTask, index) => (BusStopId: _busStopIds[index], Timetable: timetableTask.Result))
                     .ToDictionary(x => x.BusStopId, x => x.Timetable);
                 
                 await Task.Delay(2000, stoppingToken);

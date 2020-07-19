@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
+using Models;
 using Models.Timetable;
 using Orleans;
 
@@ -10,9 +11,9 @@ namespace BusTimetable.Grains
     {
         private ITimetable _timetable;
 
-        public Task UpdateRouteArrival(string routeId, double msBeforeArrival)
+        public Task UpdateRouteArrival(string routeId, double msBeforeArrival, Direction direction)
         {
-            _timetable.AddOrUpdate(routeId, msBeforeArrival);
+            _timetable.AddOrUpdate(routeId, msBeforeArrival, direction);
             return Task.CompletedTask;
         }
 

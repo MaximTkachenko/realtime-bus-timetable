@@ -3,7 +3,7 @@ import { Root } from './Metadata';
 
 type TimetableProps = { server: string, metadata: Root };
 type TimetableState = { busStopId: string, items: TimetableItem[], intervalId: NodeJS.Timeout | null, error: boolean };
-type TimetableItem = { routeId: string, msBeforeArrival: number };
+type TimetableItem = { routeId: string, msBeforeArrival: number, direction: number };
 
 export default class Timetable extends Component<TimetableProps, TimetableState> {
     constructor(props: TimetableProps){
@@ -43,7 +43,7 @@ export default class Timetable extends Component<TimetableProps, TimetableState>
         
         const listItems = this.state.items.map((item) =>            
             <div key={item.routeId} className='alert alert-primary alert-link' role="alert">
-                {item.routeId}: {item.msBeforeArrival <= this.props.metadata.nowThresholdSec ? 'now' : `${item.msBeforeArrival}sec`}
+                [{item.direction === 1 ? "THERE" : "BACK"}] {item.routeId}: {item.msBeforeArrival <= this.props.metadata.nowThresholdSec ? 'now' : `${item.msBeforeArrival}sec`}
             </div>
         );
         return (

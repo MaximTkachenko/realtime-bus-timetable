@@ -8,12 +8,13 @@ namespace Models.Timetable
         private readonly Dictionary<string, LinkedListNode<TimeTableItem>> _dictionary = new Dictionary<string, LinkedListNode<TimeTableItem>>();
         private readonly LinkedList<TimeTableItem> _items = new LinkedList<TimeTableItem>();
 
-        public void AddOrUpdate(string routeId, double msBeforeArrival)
+        public void AddOrUpdate(string routeId, double msBeforeArrival, Direction direction)
         {
             if (_dictionary.TryGetValue(routeId, out var item))
             {
                 _items.Remove(item);
                 item.Value.MsBeforeArrival = msBeforeArrival;
+                item.Value.Direction = direction;
 
                 //todo we can do it more optimally
                 var found = Find(msBeforeArrival);
@@ -28,10 +29,11 @@ namespace Models.Timetable
             }
             else
             {
+                var newItem = new TimeTableItem {RouteId = routeId, MsBeforeArrival = msBeforeArrival, Direction = direction};
                 var found = Find(msBeforeArrival);
                 var added = found == null
-                    ? _items.AddLast(new TimeTableItem {RouteId = routeId, MsBeforeArrival = msBeforeArrival})
-                    : _items.AddBefore(found, new TimeTableItem { RouteId = routeId, MsBeforeArrival = msBeforeArrival });
+                    ? _items.AddLast(newItem)
+                    : _items.AddBefore(found, newItem);
                 _dictionary.Add(routeId, added);
             }
         }
@@ -50,10 +52,9 @@ namespace Models.Timetable
             return _items.ToArray();
         }
 
-        private LinkedListNode<TimeTableItem> Find(double msBeforeArrival, LinkedListNode<TimeTableItem> startNode = null, bool searchDown = true)
+        private LinkedListNode<TimeTableItem> Find(double msBeforeArrival)
         {
-            startNode = startNode ?? _items.First;
-            for (var node = startNode; node != null; node = searchDown ? node.Next : node.Previous)
+            for (var node = _items.First; node != null; node = node.Next)
             {
                 if (node.Value.MsBeforeArrival >= msBeforeArrival)
                 {
