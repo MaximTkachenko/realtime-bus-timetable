@@ -15,18 +15,19 @@ namespace BusTimetable.Grains
         private readonly ILogger<RouteGrain> _logger;
 
         private static readonly TimeSpan Threshold = TimeSpan.FromSeconds(4);
+
         private string _routeId;
         private Route _route;
         private BusStop[] _busStops;
-        private Location _lastLocation;
-        private double _lastUnixTimestamp;
-        private BusStop _nextBusStop;
         private double _timeSpentOnBusStop;
 
         private DateTime _lastUpdate = DateTime.UnixEpoch;
+        private Direction _direction = Direction.Undefined;
+        private Location _lastLocation = Location.NoLocation;
+        private BusStop _nextBusStop;
+        private double _lastClientUnixTimestamp;
         private int _prevBusStopIndex1 = -1;
         private int _prevBusStopIndex2 = -1;
-        private Direction _direction = Direction.Undefined;
         private double _prevDistanceFromBusStop1;
         private double _prevDistanceFromBusStop2;
 
@@ -39,12 +40,13 @@ namespace BusTimetable.Grains
 
         public async Task UpdateLocation(Location location)
         {
-            if (_lastUnixTimestamp > location.UnixTimestamp)
+            //location is out of order
+            if (_lastClientUnixTimestamp > location.UnixTimestamp)
             {
                 return;
             }
 
-            _lastUnixTimestamp = location.UnixTimestamp;
+            _lastClientUnixTimestamp = location.UnixTimestamp;
 
             //location is the same
             var current = DateTime.UtcNow;
@@ -132,17 +134,43 @@ namespace BusTimetable.Grains
             if (_routeId == "repeat-obey-1")
             {
                 _logger.LogInformation(_direction == Direction.There
-                    ? $"{_direction}: {busStopsInBetween.BusStopIndex1} - {busStopsInBetween.BusStopIndex2}"
-                    : $"{_direction}: {busStopsInBetween.BusStopIndex2} - {busStopsInBetween.BusStopIndex1}");
+                    ? $"{_direction}: {busStopsInBetween.BusStopIndex1} -> {busStopsInBetween.BusStopIndex2}"
+                    : $"{_direction}: {busStopsInBetween.BusStopIndex2} -> {busStopsInBetween.BusStopIndex1}");
             }
 
-            //notify all future bus stops
-            var nextBusStop = _direction == Direction.There ? _busStops[busStopsInBetween.BusStopIndex2] : _busStops[busStopsInBetween.BusStopIndex1];
+            await NotifyBusStops(busStopsInBetween);
+        }
+
+        public override Task OnActivateAsync()
+        {
+            _routeId = this.GetPrimaryKeyString();
+
+            var metadata = _metadata.GetMetadata();
+            _timeSpentOnBusStop = metadata.TimeSpentOnBusStopMs;
+            _route = metadata.Routes.First(x => x.Id == _routeId);
+            _busStops = new BusStop[_route.Path.Length];
+            for (int i = 0; i < _route.Path.Length; i++)
+            {
+                _busStops[i] = metadata.BusStops[_route.Path[i].BusStopIndex];
+            }
+
+            _nextBusStop = _busStops[0];
+
+            return base.OnActivateAsync();
+        }
+
+        private Task NotifyBusStops((int BusStopIndex1, int BusStopIndex2) busStopsInBetween)
+        {
+            var nextBusStop = _direction == Direction.There 
+                ? _busStops[busStopsInBetween.BusStopIndex2] 
+                : _busStops[busStopsInBetween.BusStopIndex1];
             _nextBusStop = nextBusStop;
-            var distance = nextBusStop.GetDistance(location);
+            var distance = nextBusStop.GetDistance(_lastLocation);
             var duration = distance / _route.Velocity;
 
-            var tasks = new Task[_direction == Direction.There ? _busStops.Length - busStopsInBetween.BusStopIndex2 : busStopsInBetween.BusStopIndex2];
+            var tasks = new Task[_direction == Direction.There 
+                ? _busStops.Length - busStopsInBetween.BusStopIndex2 
+                : busStopsInBetween.BusStopIndex2];
             for (var i = _direction == Direction.There ? busStopsInBetween.BusStopIndex2 : busStopsInBetween.BusStopIndex1;
                 _direction == Direction.There ? i < _busStops.Length : i > -1;
                 i = _direction == Direction.There ? i + 1 : i - 1)
@@ -160,26 +188,7 @@ namespace BusTimetable.Grains
                     : i;
                 tasks[taskIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Truncate(duration / 1000), _direction);
             }
-            await Task.WhenAll(tasks);
-        }
-
-        public override Task OnActivateAsync()
-        {
-            _lastLocation = Location.NoLocation;
-            _routeId = this.GetPrimaryKeyString();
-
-            var metadata = _metadata.GetMetadata();
-            _timeSpentOnBusStop = metadata.TimeSpentOnBusStopMs;
-            _route = metadata.Routes.First(x => x.Id == _routeId);
-            _busStops = new BusStop[_route.Path.Length];
-            for (int i = 0; i < _route.Path.Length; i++)
-            {
-                _busStops[i] = metadata.BusStops[_route.Path[i].BusStopIndex];
-            }
-
-            _nextBusStop = _busStops[0];
-
-            return base.OnActivateAsync();
+            return Task.WhenAll(tasks);
         }
 
         private (int BusStopIndex1, int BusStopIndex2) GetBusStopsInBetween(Location location)
