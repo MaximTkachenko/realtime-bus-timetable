@@ -14,6 +14,7 @@ namespace BusTimetable.Grains
         private readonly IMetadataService _metadata;
         private readonly ILogger<RouteGrain> _logger;
 
+        private static readonly TimeSpan Threshold = TimeSpan.FromSeconds(4);
         private string _routeId;
         private Route _route;
         private BusStop[] _busStops;
@@ -23,7 +24,6 @@ namespace BusTimetable.Grains
         private double _timeSpentOnBusStop;
 
         private DateTime _lastUpdate = DateTime.UnixEpoch;
-        private static readonly TimeSpan Threshold = TimeSpan.FromSeconds(4);
         private int _prevBusStopIndex1 = -1;
         private int _prevBusStopIndex2 = -1;
         private Direction _direction = Direction.Undefined;
@@ -45,6 +45,8 @@ namespace BusTimetable.Grains
             }
 
             _lastUnixTimestamp = location.UnixTimestamp;
+
+            //location is the same
             var current = DateTime.UtcNow;
             if (location.Equals(_lastLocation))
             {
@@ -61,7 +63,6 @@ namespace BusTimetable.Grains
                 return;
             }
 
-            
             var distanceFromBusStop1 = _busStops[busStopsInBetween.BusStopIndex1].GetDistance(location);
             var distanceFromBusStop2 = _busStops[busStopsInBetween.BusStopIndex2].GetDistance(location);
 
@@ -69,21 +70,25 @@ namespace BusTimetable.Grains
             if (current - _lastUpdate > Threshold
                 || _prevBusStopIndex1 == -1 && _prevBusStopIndex2 == -1)
             {
+                //update prev state
                 _prevBusStopIndex1 = busStopsInBetween.BusStopIndex1;
                 _prevBusStopIndex2 = busStopsInBetween.BusStopIndex2;
 
                 _prevDistanceFromBusStop1 = distanceFromBusStop1;
                 _prevDistanceFromBusStop2 = distanceFromBusStop2;
 
+                _lastLocation = location;
                 _lastUpdate = current;
 
                 return;
             }
 
             //previous and current locations are valid
-            if (_prevBusStopIndex1 == busStopsInBetween.BusStopIndex1 && _prevBusStopIndex2 == busStopsInBetween.BusStopIndex2)
+            if (_prevBusStopIndex1 == busStopsInBetween.BusStopIndex1 
+                && _prevBusStopIndex2 == busStopsInBetween.BusStopIndex2)
             {
                 //we are still between the same bus stops
+
                 if (_direction == Direction.There)
                 {
                     _direction = (distanceFromBusStop1 >= _prevDistanceFromBusStop1 || Math.Abs(distanceFromBusStop1 - _prevDistanceFromBusStop1) <= 3)
@@ -102,12 +107,14 @@ namespace BusTimetable.Grains
             else
             {
                 //we are on a the next segment of route
+
                 _direction = busStopsInBetween.BusStopIndex1 > _prevBusStopIndex1
                              && busStopsInBetween.BusStopIndex2 > _prevBusStopIndex2
                     ? Direction.There
                     : Direction.Back;
 
                 //remove from prev bus stop  - bus stop should check its timetable by timer
+                //replace this one with timer in bus stop
                 var nextBusStopGrainOld = GrainFactory.GetGrain<IBusStop>(_nextBusStop.Id);
                 await nextBusStopGrainOld.RemoveRouteArrival(_routeId);
             }
@@ -117,10 +124,9 @@ namespace BusTimetable.Grains
             _prevBusStopIndex2 = busStopsInBetween.BusStopIndex2;
 
             _prevDistanceFromBusStop1 = distanceFromBusStop1;
-            _prevDistanceFromBusStop2 = distanceFromBusStop2; 
-            
-            _lastLocation = location;
+            _prevDistanceFromBusStop2 = distanceFromBusStop2;
 
+            _lastLocation = location;
             _lastUpdate = current;
 
             if (_routeId == "repeat-obey-1")
@@ -130,12 +136,11 @@ namespace BusTimetable.Grains
                     : $"{_direction}: {busStopsInBetween.BusStopIndex2} - {busStopsInBetween.BusStopIndex1}");
             }
 
-            //notify bus stop
+            //notify all future bus stops
             var nextBusStop = _direction == Direction.There ? _busStops[busStopsInBetween.BusStopIndex2] : _busStops[busStopsInBetween.BusStopIndex1];
             _nextBusStop = nextBusStop;
             var distance = nextBusStop.GetDistance(location);
             var duration = distance / _route.Velocity;
-
 
             var tasks = new Task[_direction == Direction.There ? _busStops.Length - busStopsInBetween.BusStopIndex2 : busStopsInBetween.BusStopIndex2];
             for (var i = _direction == Direction.There ? busStopsInBetween.BusStopIndex2 : busStopsInBetween.BusStopIndex1;
