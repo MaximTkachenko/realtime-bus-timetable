@@ -5,6 +5,7 @@ using BusTimetable.Interfaces;
 using BusTimetable.Services;
 using Microsoft.Extensions.Logging;
 using Models;
+using Models.Timetable;
 using Orleans;
 
 namespace BusTimetable.Grains
@@ -114,11 +115,6 @@ namespace BusTimetable.Grains
                              && busStopsInBetween.BusStopIndex2 > _prevBusStopIndex2
                     ? Direction.There
                     : Direction.Back;
-
-                //remove from prev bus stop  - bus stop should check its timetable by timer
-                //replace this one with timer in bus stop
-                var nextBusStopGrainOld = GrainFactory.GetGrain<IBusStop>(_nextBusStop.Id);
-                await nextBusStopGrainOld.RemoveRouteArrival(_routeId);
             }
 
             //update prev state
@@ -186,7 +182,14 @@ namespace BusTimetable.Grains
                 var taskIndex = _direction == Direction.There
                     ? i - busStopsInBetween.BusStopIndex2
                     : i;
-                tasks[taskIndex] = busStopGrain.UpdateRouteArrival(_routeId, Math.Truncate(duration / 1000), _direction);
+                var item = new TimetableItem
+                {
+                    RouteId = _routeId, 
+                    MsBeforeArrival = Math.Truncate(duration / 1000),
+                    Direction = _direction,
+                    UnixTimestamp = DateTime.UtcNow.ToUnixTimestamp()
+                };
+                tasks[taskIndex] = busStopGrain.UpdateRouteArrival(item);
             }
             return Task.WhenAll(tasks);
         }

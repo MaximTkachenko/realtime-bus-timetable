@@ -4,8 +4,8 @@ namespace Models.Timetable
 {
     public interface ITimetable
     {
-        void AddOrUpdate(string routeId, double msBeforeArrival, Direction direction);
-        void Remove(string routeId);
-        IReadOnlyList<TimeTableItem> GetTimetable();
+        void AddOrUpdate(TimetableItem item);
+        void Clean(double timestampThreshold);
+        IReadOnlyList<TimetableItem> GetTimetable();
     }
 }

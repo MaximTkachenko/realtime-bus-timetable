@@ -5,21 +5,21 @@ namespace Models.Timetable
 {
     public class NaiveTimetable : ITimetable
     {
-        private List<TimeTableItem> _items = new List<TimeTableItem>();
+        private List<TimetableItem> _items = new List<TimetableItem>();
 
-        public void AddOrUpdate(string routeId, double msBeforeArrival, Direction direction)
+        public void AddOrUpdate(TimetableItem item)
         {
-            _items.RemoveAll(x => x.RouteId == routeId);
-            _items.Add(new TimeTableItem{RouteId = routeId, MsBeforeArrival = msBeforeArrival, Direction = direction});
+            _items.RemoveAll(x => x.RouteId == item.RouteId);
+            _items.Add(item);
             _items = _items.OrderBy(x => x.MsBeforeArrival).ToList();
         }
 
-        public void Remove(string routeId)
+        public void Clean(double timestampThreshold)
         {
-            _items.RemoveAll(x => x.RouteId == routeId);
+            _items.RemoveAll(x => x.UnixTimestamp < timestampThreshold);
         }
 
-        public IReadOnlyList<TimeTableItem> GetTimetable()
+        public IReadOnlyList<TimetableItem> GetTimetable()
         {
             return _items;
         }
