@@ -5,17 +5,18 @@ import Timetable from './Timetable';
 import * as rb from 'react-bootstrap';
 
 type AppProps = {  };
-type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null, isFirstTime: boolean };
+type AppState = { connected: boolean, server: string, error: boolean, metadata: Root | null, connecting: boolean };
 
 export default class App extends Component<AppProps, AppState> {
   constructor(props: AppProps){
     super(props);
-    this.state = {connected: false, server: '', error: false, metadata: null, isFirstTime: true};
+    this.state = {connected: false, server: '', error: false, metadata: null, connecting: false};
     this.connectToServer = this.connectToServer.bind(this);
     this.updateHost = this.updateHost.bind(this);
   }
 
   connectToServer(e: any){
+    this.setState({connecting: true, error: false});
     e.preventDefault();
     
     fetch(this.state.server + '/metadata')
@@ -24,13 +25,15 @@ export default class App extends Component<AppProps, AppState> {
       this.setState({ 
         connected: true,
         error: false,
-        metadata: response
+        metadata: response,
+        connecting: false
       }))
     .catch(error => {
       this.setState({ 
         connected: false,
         error: true,
-        metadata: null
+        metadata: null,
+        connecting: false
       })
     });
   }
@@ -67,7 +70,7 @@ export default class App extends Component<AppProps, AppState> {
               <rb.InputGroup className="mb-3">
                 <rb.FormControl placeholder="Host" aria-label="Host" aria-describedby="basic-addon2" onChange={this.updateHost}/>
                 <rb.InputGroup.Append>
-                  <rb.Button type="submit">Go</rb.Button>
+                  <rb.Button type="submit" disabled={this.state.connecting}>{this.state.connecting ? "Connecting..." : "Go"}</rb.Button>
                 </rb.InputGroup.Append>
               </rb.InputGroup>
             </form>
