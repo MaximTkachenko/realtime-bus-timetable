@@ -5,17 +5,18 @@
 How to run it locally:
 - run orleans backend:
 ```
-cd src\BusTimetable
+cd src/BusTimetable
 dotnet run
 ```
-- backend listens on port 5005
+- backend is hosted on 5005 port
+- orleans dashboard is hosted on 5006 port 
 - run frontend:
 ```
-cd \client
+cd /client
 npm start
 ```
-- type `http://localhost:5005` in host input and click `GO`
-- click `Start` and then click on any circle on the map
+- type `http://localhost:5005` in the host input and click `Go`
+- click on any circle on the map to start tracking
 
 Stack:
 - frontend: typescript, [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
