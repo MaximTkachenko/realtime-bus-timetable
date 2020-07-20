@@ -23,7 +23,7 @@ Stack:
 - backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
 
 Useful links:
-- https://svgjs.com/docs/2.7/
+- https://svgjs.com/docs/3.0/
 - https://dotnet.github.io/orleans/Documentation/index.html
 
 ToDo:
