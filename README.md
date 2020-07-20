@@ -4,18 +4,18 @@
 
 How to run it locally:
 - run orleans backend:
-```
+```bash
 cd src/BusTimetable
 dotnet run
-```
-- backend is hosted on 5005 port
-- orleans dashboard is hosted on 5006 port 
+```bash
+- backend is hosted on `5005` port
+- orleans dashboard is hosted on `5006` port 
 - run frontend:
 ```
 cd /client
 npm run start
 ```
-- type `http://localhost:5005` in the host input and click `Go`
+- type `http://localhost:5005` in host input and click `Go` button
 - click on any circle on the map to start tracking
 
 Stack:
