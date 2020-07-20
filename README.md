@@ -13,7 +13,7 @@ dotnet run
 - run frontend:
 ```
 cd /client
-npm start
+npm run start
 ```
 - type `http://localhost:5005` in the host input and click `Go`
 - click on any circle on the map to start tracking
