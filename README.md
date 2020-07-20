@@ -7,7 +7,7 @@ How to run it locally:
 ```bash
 cd src/BusTimetable
 dotnet run
-```bash
+```
 - backend is hosted on `5005` port
 - orleans dashboard is hosted on `5006` port 
 - run frontend:
