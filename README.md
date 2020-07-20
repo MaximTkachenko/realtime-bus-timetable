@@ -19,8 +19,8 @@ npm run start
 - click on any circle on the map to start tracking
 
 Stack:
-- frontend: typescript, [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
-- backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
+- frontend: [typescript](https://www.typescriptlang.org/), [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
+- backend: [asp.net core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1), [orleans](https://dotnet.github.io/orleans/)
 
 Useful links:
 - https://svgjs.com/docs/3.0/
