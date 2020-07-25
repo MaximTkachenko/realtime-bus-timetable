@@ -2,6 +2,10 @@
 
 # realtime-bus-timetable [WORK IN PROGRESS]
 
+## Sample
+
+![](sample.gif)
+
 ## How to run it locally:
 - run orleans backend:
 ```bash
@@ -17,10 +21,6 @@ npm run start
 ```
 - type `http://localhost:5005` in host input and click `Go` button
 - click on any circle on the map to start tracking
-
-## Sample
-
-![](sample.gif)
 
 ## Stack:
 - frontend: [typescript](https://www.typescriptlang.org/), [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
