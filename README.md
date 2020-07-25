@@ -4,25 +4,26 @@
 
 How to run it locally:
 - run orleans backend:
-```
-cd src\BusTimetable
+```bash
+cd src/BusTimetable
 dotnet run
 ```
-- backend listens on port 5005
+- backend is hosted on `5005` port
+- orleans dashboard is hosted on `5006` port 
 - run frontend:
 ```
-cd \client
-npm start
+cd /client
+npm run start
 ```
-- type `http://localhost:5005` in host input and click `GO`
-- click `Start` and then click on any circle on the map
+- type `http://localhost:5005` in host input and click `Go` button
+- click on any circle on the map to start tracking
 
 Stack:
-- frontend: typescript, [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
-- backend: asp.net core, [orleans](https://dotnet.github.io/orleans/)
+- frontend: [typescript](https://www.typescriptlang.org/), [react](https://create-react-app.dev/docs/getting-started/), [svg.js](https://svgjs.com)
+- backend: [asp.net core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1), [orleans](https://dotnet.github.io/orleans/)
 
 Useful links:
-- https://svgjs.com/docs/2.7/
+- https://svgjs.com/docs/3.0/
 - https://dotnet.github.io/orleans/Documentation/index.html
 
 ToDo:
