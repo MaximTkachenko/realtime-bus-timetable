@@ -44,8 +44,12 @@ export default class App extends Component<AppProps, AppState> {
   
   render(){  
     if(this.state.connected && this.state.metadata != null){
+      const style = {
+        paddingLeft: '5px'
+      };
+
       return (       
-        <rb.Container fluid>
+        <rb.Container fluid style={style}>
           <rb.Row>      
             <rb.Col md="auto">
               <RoutesScreen metadata={this.state.metadata} server={this.state.server} />
