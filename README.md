@@ -29,6 +29,7 @@ npm run start
 Useful links:
 - https://svgjs.com/docs/3.0/
 - https://dotnet.github.io/orleans/Documentation/index.html
+- https://github.com/sketch7/orleans-heroes
 
 ## ToDo:
 - [DONE] basic logic - [v1](https://github.com/MaximTkachenko/realtime-bus-timetable/releases/tag/v1)
