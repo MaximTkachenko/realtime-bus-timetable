@@ -1,7 +1,9 @@
 ﻿using System.Text.Json.Serialization;
+using Orleans;
 
 namespace Models.Timetable
 {
+    [GenerateSerializer]
     public class TimetableItem
     {
         public TimetableItem(){}
@@ -14,9 +16,9 @@ namespace Models.Timetable
             UnixTimestamp = unixTimestamp;
         }
 
-        [JsonPropertyName("routeId")] public string RouteId { get; set; }
-        [JsonPropertyName("msBeforeArrival")] public double MsBeforeArrival { get; set; }
-        [JsonPropertyName("direction")] public Direction Direction { get; set; }
-        [JsonPropertyName("unixTimestamp")] public double UnixTimestamp { get; set; }
+        [Id(0), JsonPropertyName("routeId")] public string RouteId { get; set; }
+        [Id(1), JsonPropertyName("msBeforeArrival")] public double MsBeforeArrival { get; set; }
+        [Id(2), JsonPropertyName("direction")] public Direction Direction { get; set; }
+        [Id(3), JsonPropertyName("unixTimestamp")] public double UnixTimestamp { get; set; }
     }
 }

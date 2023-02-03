@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using Orleans;
 
 namespace Models
 {
+    [GenerateSerializer]
     public class Location
     {
-        public static Location NoLocation => new Location { X = -1, Y = -1 };
+        public static Location NoLocation => new() { X = -1, Y = -1 };
 
         private const double SelectionFuzziness = 3;
         private const double Tolerance = 0.1f;
 
-        [JsonPropertyName("x")] public double X { get; set; }
-        [JsonPropertyName("y")] public double Y { get; set; }
-        [JsonPropertyName("unixTimestamp")] public double UnixTimestamp { get; set; }
+        [Id(0), JsonPropertyName("x")] public double X { get; set; }
+        [Id(1), JsonPropertyName("y")] public double Y { get; set; }
+        [Id(2), JsonPropertyName("unixTimestamp")] public double UnixTimestamp { get; set; }
 
         public bool Equals(Location other)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using BusTimetable.Services;
@@ -137,7 +138,7 @@ namespace BusTimetable.Grains
             await NotifyBusStops(busStopsInBetween);
         }
 
-        public override Task OnActivateAsync()
+        public override Task OnActivateAsync(CancellationToken _)
         {
             _routeId = this.GetPrimaryKeyString();
 
@@ -152,7 +153,7 @@ namespace BusTimetable.Grains
 
             _nextBusStop = _busStops[0];
 
-            return base.OnActivateAsync();
+            return base.OnActivateAsync(_);
         }
 
         private Task NotifyBusStops((int BusStopIndex1, int BusStopIndex2) busStopsInBetween)

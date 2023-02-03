@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using BusTimetable.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -28,7 +29,7 @@ namespace BusTimetable.Grains
             return Task.CompletedTask;
         }
 
-        public override Task OnActivateAsync()
+        public override Task OnActivateAsync(CancellationToken _)
         {
             _timetable = new NaiveTimetable();
 
@@ -38,7 +39,7 @@ namespace BusTimetable.Grains
                 return Task.CompletedTask;
             }, null, CleanupInterval, CleanupInterval);
 
-            return base.OnActivateAsync();
+            return base.OnActivateAsync(_);
         }
 
         //todo this method should be optimized using:
