@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace Models
+namespace Models;
+
+public static class DateTimeExt
 {
-    public static class DateTimeExt
+    public static double ToUnixTimestamp(this DateTime dt)
     {
-        public static double ToUnixTimestamp(this DateTime dt)
-        {
-            return dt.Subtract(DateTime.UnixEpoch).TotalSeconds;
-        }
+        return dt.Subtract(DateTime.UnixEpoch).TotalSeconds;
     }
 }

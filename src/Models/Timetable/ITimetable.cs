@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Models.Timetable
+namespace Models.Timetable;
+
+public interface ITimetable
 {
-    public interface ITimetable
-    {
-        void AddOrUpdate(TimetableItem item);
-        void Clean(double timestampThreshold);
-        IReadOnlyList<TimetableItem> GetTimetable();
-    }
+    void AddOrUpdate(TimetableItem item);
+    void Clean(double timestampThreshold);
+    IReadOnlyList<TimetableItem> GetTimetable();
 }

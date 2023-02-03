@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusTimetable.Tests.BusTimetableTests.Grains
+namespace BusTimetable.Tests.BusTimetableTests.Grains;
+
+public class BusStopGrainTests
 {
-    public class BusStopGrainTests
-    {
-    }
 }

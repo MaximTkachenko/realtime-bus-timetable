@@ -2,19 +2,18 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
-namespace BusTimetable.TimetableBenchmark
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            BenchmarkRunner.Run<TimetableTest>();
-        }
-    }
+namespace BusTimetable.TimetableBenchmark;
 
-    [MemoryDiagnoser]
-    public class TimetableTest
+class Program
+{
+    static void Main(string[] args)
     {
-        //todo add benchmarks
+        BenchmarkRunner.Run<TimetableTest>();
     }
+}
+
+[MemoryDiagnoser]
+public class TimetableTest
+{
+    //todo add benchmarks
 }

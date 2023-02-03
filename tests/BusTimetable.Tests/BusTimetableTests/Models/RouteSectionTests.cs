@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusTimetable.Tests.BusTimetableTests.Models
+namespace BusTimetable.Tests.BusTimetableTests.Models;
+
+class RouteSectionTests
 {
-    class RouteSectionTests
-    {
-    }
 }

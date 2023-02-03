@@ -1,9 +1,8 @@
-﻿namespace Models
+﻿namespace Models;
+
+public enum Direction
 {
-    public enum Direction
-    {
-        Undefined = 0,
-        There = 1,
-        Back = 2
-    }
+    Undefined = 0,
+    There = 1,
+    Back = 2
 }
