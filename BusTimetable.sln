@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmark", "benchmark", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusTimetable.TimetableBenchmark", "benchmark\BusTimetable.TimetableBenchmark\BusTimetable.TimetableBenchmark.csproj", "{F5658618-89AF-460D-8322-4D2BDA56BDAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusReporter", "src\BusReporter\BusReporter.csproj", "{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{F5658618-89AF-460D-8322-4D2BDA56BDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5658618-89AF-460D-8322-4D2BDA56BDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5658618-89AF-460D-8322-4D2BDA56BDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{D9B7E648-F888-4FAB-9560-D6D2D1B12BC8} = {1AFA2D6D-2036-4DC0-B79D-95BCF66F6F77}
 		{136F699E-F498-4345-A954-465A2A17DAEF} = {C6309F1E-9976-4747-80A0-CBC64845AB78}
 		{F5658618-89AF-460D-8322-4D2BDA56BDAD} = {DDE37F65-36F7-48AA-9015-186B685F9D4A}
+		{3260A36C-A8C1-4E24-A313-E0BFFB4A23E4} = {C6309F1E-9976-4747-80A0-CBC64845AB78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF7180DE-3381-42E9-B410-E3D0CF8CFC5B}

@@ -8,7 +8,7 @@ using Orleans;
 
 namespace BusTimetable.Controllers;
 
-[ApiController]
+[ApiController, Obsolete]
 public class TimetableController : ControllerBase
 {
     private readonly IMetadataService _metadata;

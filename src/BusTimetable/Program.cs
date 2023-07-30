@@ -1,60 +1,55 @@
-using System.Net;
-using Microsoft.AspNetCore.Hosting;
+using BusTimetable.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans;
-using Orleans.Configuration;
 using Orleans.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace BusTimetable;
 
-public class Program
+// todo read from config
+// todo use build.props
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Information)
+    .MinimumLevel.Override("Orleans", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger();
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder( args );
+builder.Host.UseSerilog();
+
+builder.Services.AddCors();
+
+builder.Services.AddSingleton<IMetadataService, MetadataService>();
+builder.Services.AddSingleton<MetadataV2>();
+builder.Services.AddSingleton<ITimetableCache, TimetableCache>();
+
+builder.Services.AddControllers();
+builder.Host.UseOrleans(siloBuilder =>
 {
-    public static void Main(string[] args)
-    {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-            .MinimumLevel.Override("Orleans", LogEventLevel.Fatal)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateLogger();
+    siloBuilder
+        .UseDashboard(options => {
+            options.Host = "*";
+            options.Port = 5088;
+            options.HostSelf = true;
+            options.CounterUpdateIntervalMs = 2000;
+        })
+        .UseLocalhostClustering();
+});
 
-        CreateHostBuilder(args).Build().Run();
-    }
+WebApplication app = builder.Build();
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .UseSerilog()
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder
-                    .UseStartup<Startup>();
-            })
-            .UseOrleans(siloBuilder =>
-            {
-                siloBuilder
-                    .UseDashboard(options => {
-                        options.Host = "*";
-                        options.Port = 5088;
-                        options.HostSelf = true;
-                        options.CounterUpdateIntervalMs = 2000;
-                    })
-                    .UseLocalhostClustering()
-                    .Configure<ClusterOptions>(opts =>
-                    {
-                        opts.ClusterId = "dev";
-                        opts.ServiceId = nameof(BusTimetable);
-                    })
-                    .Configure<EndpointOptions>(opts =>
-                    {
-                        opts.AdvertisedIPAddress = IPAddress.Loopback;
-                    })
-                    .ConfigureLogging(logging =>
-                    {
-                        logging.AddSerilog();
-                    });
-            });
-}
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(_ => true));
+
+app.UseRouting();
+app.MapControllers();
+app.UseWebSockets();
+
+await app.RunAsync();
